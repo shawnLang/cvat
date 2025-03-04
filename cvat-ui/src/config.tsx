@@ -54,16 +54,16 @@ const DEFAULT_AWS_S3_REGIONS: string[][] = [
 
 const SERVER_UNAVAILABLE_COMPONENT = (
     <>
-        Make sure the CVAT backend and all necessary services
-        (Database, Redis and Open Policy Agent) are running and available.
-        If you upgraded from version 2.2.0 or earlier, manual actions may be needed,
-        see the&nbsp;
+        确定 CVAT 后台服务 和所有必要服务
+        (数据库, Redis and 开放策略代理) 运行正常.
+        从 2.2.0 或之前版本升级, 可能需要手动配置,
+        查看&nbsp;
         <a
             target='_blank'
             rel='noopener noreferrer'
             href={UPGRADE_GUIDE_URL}
         >
-            Upgrade Guide
+            升级指导
         </a>
         .
     </>

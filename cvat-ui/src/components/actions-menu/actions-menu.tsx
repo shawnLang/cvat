@@ -65,8 +65,8 @@ function ActionsMenuComponent(props: Props): JSX.Element {
 
             if (params.key === Actions.DELETE_TASK) {
                 Modal.confirm({
-                    title: `The task ${taskID} will be deleted`,
-                    content: 'All related data (images, annotations) will be lost. Continue?',
+                    title: `任务 ${taskID} 将被删除`,
+                    content: '所有相关数据（图像、标注）都将丢失。继续？',
                     className: 'cvat-modal-confirm-delete-task',
                     onOk: () => {
                         onClickMenu(params);
@@ -75,12 +75,12 @@ function ActionsMenuComponent(props: Props): JSX.Element {
                         type: 'primary',
                         danger: true,
                     },
-                    okText: 'Delete',
+                    okText: '删除',
                 });
             } else if (params.key === Actions.MERGE_CONSENSUS_JOBS) {
                 Modal.confirm({
-                    title: 'The consensus jobs will be merged',
-                    content: 'Existing annotations in parent jobs will be updated. Continue?',
+                    title: '共同工作将被合并',
+                    content: '父作业中的现有标注将被更新。继续吗?',
                     className: 'cvat-modal-confirm-consensus-merge-task',
                     onOk: () => {
                         onClickMenu(params);
@@ -89,7 +89,7 @@ function ActionsMenuComponent(props: Props): JSX.Element {
                         type: 'primary',
                         danger: true,
                     },
-                    okText: 'Merge',
+                    okText: '合并',
                 });
             } else {
                 onClickMenu(params);
@@ -100,22 +100,22 @@ function ActionsMenuComponent(props: Props): JSX.Element {
 
     const menuItems: [JSX.Element, number][] = [];
     menuItems.push([(
-        <Menu.Item key={Actions.LOAD_TASK_ANNO}>Upload annotations</Menu.Item>
+        <Menu.Item key={Actions.LOAD_TASK_ANNO}>上传标注</Menu.Item>
     ), 0]);
 
     menuItems.push([(
-        <Menu.Item key={Actions.EXPORT_TASK_DATASET}>Export task dataset</Menu.Item>
+        <Menu.Item key={Actions.EXPORT_TASK_DATASET}>导出任务数据集</Menu.Item>
     ), 10]);
 
     if (bugTracker) {
         menuItems.push([(
-            <Menu.Item key={Actions.OPEN_BUG_TRACKER}>Open bug tracker</Menu.Item>
+            <Menu.Item key={Actions.OPEN_BUG_TRACKER}>打开错误追踪</Menu.Item>
         ), 20]);
     }
 
     menuItems.push([(
         <Menu.Item disabled={inferenceIsActive} key={Actions.RUN_AUTO_ANNOTATION}>
-            Automatic annotation
+            自动标注
         </Menu.Item>
     ), 30]);
 
@@ -123,7 +123,7 @@ function ActionsMenuComponent(props: Props): JSX.Element {
         <Menu.Item
             key={Actions.BACKUP_TASK}
         >
-            Backup Task
+            备份任务
         </Menu.Item>
     ), 40]);
 
@@ -131,7 +131,7 @@ function ActionsMenuComponent(props: Props): JSX.Element {
         <Menu.Item
             key={Actions.VIEW_ANALYTICS}
         >
-            View analytics
+            查看分析
         </Menu.Item>
     ), 50]);
 
@@ -139,7 +139,7 @@ function ActionsMenuComponent(props: Props): JSX.Element {
         <Menu.Item
             key={Actions.QUALITY_CONTROL}
         >
-            Quality control
+            质量管理
         </Menu.Item>
     ), 60]);
 
@@ -148,7 +148,7 @@ function ActionsMenuComponent(props: Props): JSX.Element {
             <Menu.Item
                 key={Actions.CONSENSUS_MANAGEMENT}
             >
-                Consensus management
+                共同管理
             </Menu.Item>
         ), 55]);
         menuItems.push([(
@@ -157,21 +157,21 @@ function ActionsMenuComponent(props: Props): JSX.Element {
                 disabled={isTaskInMergingConsensus}
                 icon={isTaskInMergingConsensus && <LoadingOutlined />}
             >
-                Merge consensus jobs
+                合并共同工作
             </Menu.Item>
         ), 60]);
     }
 
     if (projectID === null) {
         menuItems.push([(
-            <Menu.Item key={Actions.MOVE_TASK_TO_PROJECT}>Move to project</Menu.Item>
+            <Menu.Item key={Actions.MOVE_TASK_TO_PROJECT}>移入项目</Menu.Item>
         ), 70]);
     }
 
     menuItems.push([(
         <React.Fragment key={Actions.DELETE_TASK}>
             <Menu.Divider />
-            <Menu.Item key={Actions.DELETE_TASK}>Delete</Menu.Item>
+            <Menu.Item key={Actions.DELETE_TASK}>删除</Menu.Item>
         </React.Fragment>
     ), 70]);
 

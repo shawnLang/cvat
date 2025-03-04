@@ -86,7 +86,7 @@ export default function ProjectPageComponent(): JSX.Element {
                 }).catch((error: Error) => {
                     if (mounted.current) {
                         notification.error({
-                            message: 'Could not receive the requested project from the server',
+                            message: '无法从服务器获取请求的项目信息',
                             description: error.toString(),
                         });
                     }
@@ -97,8 +97,8 @@ export default function ProjectPageComponent(): JSX.Element {
                 });
         } else {
             notification.error({
-                message: 'Could not receive the requested project from the server',
-                description: `Requested project id "${id}" is not valid`,
+                message: '无法从服务器获取请求的项目信息',
+                description: `请求的项目id "${id}"不合法`,
             });
             setFetchingProject(false);
         }
@@ -169,7 +169,7 @@ export default function ProjectPageComponent(): JSX.Element {
             </Row>
         </>
     ) : (
-        <Empty description='No tasks found' />
+        <Empty description='没有任务' />
     );
 
     return (
@@ -197,7 +197,7 @@ export default function ProjectPageComponent(): JSX.Element {
                         }).catch((error: Error) => {
                             if (mounted.current) {
                                 notification.error({
-                                    message: 'Could not update the project',
+                                    message: '无法更新项目',
                                     description: error.toString(),
                                 });
                             }
@@ -224,7 +224,7 @@ export default function ProjectPageComponent(): JSX.Element {
                                 }}
                                 defaultValue={tasksQuery.search || ''}
                                 className='cvat-project-page-tasks-search-bar'
-                                placeholder='Search ...'
+                                placeholder='搜索 ...'
                             />
                             <div>
                                 <SortingComponent
@@ -284,7 +284,7 @@ export default function ProjectPageComponent(): JSX.Element {
                                         className='cvat-create-task-button'
                                         onClick={() => history.push(`/tasks/create?projectId=${id}`)}
                                     >
-                                        Create a new task
+                                        新建一个任务
                                     </Button>
                                     <Button
                                         type='primary'
@@ -292,7 +292,7 @@ export default function ProjectPageComponent(): JSX.Element {
                                         className='cvat-create-multi-tasks-button'
                                         onClick={() => history.push(`/tasks/create?projectId=${id}&many=true`)}
                                     >
-                                        Create multi tasks
+                                        新建多个任务
                                     </Button>
                                 </CvatDropdownMenuPaper>
                             )}

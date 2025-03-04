@@ -32,7 +32,7 @@ import CVATTag, { TagType } from 'components/common/cvat-tag';
 import JobActionsMenu from './job-actions-menu';
 
 function formatDate(value: moment.Moment): string {
-    return value.format('MMM Do YYYY HH:mm');
+    return value.format('YYYY-MM-DD HH:mm');
 }
 
 interface Props {
@@ -73,15 +73,15 @@ function ReviewSummaryComponent({ jobInstance }: { jobInstance: any }): JSX.Elem
     if (!summary) {
         if (error) {
             if (error.toString().includes('403')) {
-                return <p>You do not have permissions</p>;
+                return <p>您没有权限</p>;
             }
 
-            return <p>Could not fetch, check console output</p>;
+            return <p>无法获取，检查控制台输出</p>;
         }
 
         return (
             <>
-                <p>Loading.. </p>
+                <p>加载.. </p>
                 <LoadingOutlined />
             </>
         );
@@ -92,13 +92,13 @@ function ReviewSummaryComponent({ jobInstance }: { jobInstance: any }): JSX.Elem
             <tbody>
                 <tr>
                     <td>
-                        <Text strong>Unsolved issues</Text>
+                        <Text strong>未解决的问题</Text>
                     </td>
                     <td>{summary.issues_unsolved}</td>
                 </tr>
                 <tr>
                     <td>
-                        <Text strong>Resolved issues</Text>
+                        <Text strong>已解决的问题</Text>
                     </td>
                     <td>{summary.issues_resolved}</td>
                 </tr>
@@ -127,7 +127,7 @@ function JobItem(props: Props): JSX.Element {
     }
     const frameCountPercent = ((job.frameCount / (task.size || 1)) * 100).toFixed(0);
     const frameCountPercentRepresentation = frameCountPercent === '0' ? '<1' : frameCountPercent;
-    const jobName = `Job #${job.id}`;
+    const jobName = `作业 #${job.id}`;
 
     const childJobViews: React.JSX.Element[] = childJobs ? childJobs.map((eachJob: Job) => (
         <JobItem key={eachJob.id} job={eachJob} task={task} onJobUpdate={onJobUpdate} />
@@ -174,13 +174,13 @@ function JobItem(props: Props): JSX.Element {
                         </Row>
                         <Row className='cvat-job-item-dates-info'>
                             <Col>
-                                <Text>Created: </Text>
+                                <Text>创建: </Text>
                                 <Text type='secondary'>{`${formatDate(created)}`}</Text>
                             </Col>
                         </Row>
                         <Row>
                             <Col>
-                                <Text>Updated: </Text>
+                                <Text>更新: </Text>
                                 <Text type='secondary'>{`${formatDate(updated)}`}</Text>
                             </Col>
                         </Row>
@@ -191,7 +191,7 @@ function JobItem(props: Props): JSX.Element {
                                 <Row>
                                     <Col className='cvat-job-item-select'>
                                         <Row>
-                                            <Text>Assignee:</Text>
+                                            <Text>承接人:</Text>
                                         </Row>
                                         <UserSelector
                                             className='cvat-job-assignee-selector'
@@ -205,7 +205,7 @@ function JobItem(props: Props): JSX.Element {
                                     <Col className='cvat-job-item-select'>
                                         <Row justify='space-between' align='middle'>
                                             <Col>
-                                                <Text>Stage:</Text>
+                                                <Text>阶段:</Text>
                                             </Col>
                                         </Row>
                                         <Select
@@ -217,20 +217,20 @@ function JobItem(props: Props): JSX.Element {
                                             }}
                                         >
                                             <Select.Option value={JobStage.ANNOTATION}>
-                                                {JobStage.ANNOTATION}
+                                                标注
                                             </Select.Option>
                                             <Select.Option value={JobStage.VALIDATION}>
-                                                {JobStage.VALIDATION}
+                                                验证
                                             </Select.Option>
                                             <Select.Option value={JobStage.ACCEPTANCE}>
-                                                {JobStage.ACCEPTANCE}
+                                                接受
                                             </Select.Option>
                                         </Select>
                                     </Col>
                                     <Col className='cvat-job-item-select'>
                                         <Row justify='space-between' align='middle'>
                                             <Col>
-                                                <Text>State:</Text>
+                                                <Text>状态:</Text>
                                             </Col>
                                         </Row>
                                         <Select
@@ -241,13 +241,13 @@ function JobItem(props: Props): JSX.Element {
                                                 onJobUpdate(job, { state: newValue });
                                             }}
                                         >
-                                            <Select.Option value={JobState.NEW}>{JobState.NEW}</Select.Option>
+                                            <Select.Option value={JobState.NEW}>刚新建</Select.Option>
                                             <Select.Option value={JobState.IN_PROGRESS}>
-                                                {JobState.IN_PROGRESS}
+                                                进行中
                                             </Select.Option>
-                                            <Select.Option value={JobState.REJECTED}>{JobState.REJECTED}</Select.Option>
+                                            <Select.Option value={JobState.REJECTED}>已拒绝</Select.Option>
                                             <Select.Option value={JobState.COMPLETED}>
-                                                {JobState.COMPLETED}
+                                                已完成
                                             </Select.Option>
                                         </Select>
                                     </Col>
@@ -261,7 +261,7 @@ function JobItem(props: Props): JSX.Element {
                                 <Row>
                                     <Col>
                                         <Icon component={DurationIcon} />
-                                        <Text>Duration: </Text>
+                                        <Text>持续时间: </Text>
                                         <Text type='secondary'>
                                             {`${moment
                                                 .duration(now.diff(created))
@@ -272,7 +272,7 @@ function JobItem(props: Props): JSX.Element {
                                 <Row>
                                     <Col>
                                         <BorderOutlined />
-                                        <Text>Frame count: </Text>
+                                        <Text>帧数: </Text>
                                         <Text type='secondary' className='cvat-job-item-frames'>
                                             {`${job.frameCount} (${frameCountPercentRepresentation}%)`}
                                         </Text>
@@ -282,7 +282,7 @@ function JobItem(props: Props): JSX.Element {
                                     <Row>
                                         <Col>
                                             <Icon component={FramesIcon} />
-                                            <Text>Frame range: </Text>
+                                            <Text>帧范围: </Text>
                                             <Text type='secondary' className='cvat-job-item-frame-range'>
                                                 {`${job.startFrame}-${job.stopFrame}`}
                                             </Text>
@@ -314,7 +314,7 @@ function JobItem(props: Props): JSX.Element {
                         items={[
                             {
                                 key: '1',
-                                label: <Text>{`${childJobViews.length} Replicas`}</Text>,
+                                label: <Text>{`${childJobViews.length} 副本`}</Text>,
                                 children: childJobViews,
                             },
                         ]}

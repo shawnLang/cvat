@@ -102,11 +102,11 @@ export default function ProjectItemComponent(props: Props): JSX.Element {
                             <div>
                                 {ownerName && (
                                     <>
-                                        <Text type='secondary'>{`Created ${ownerName ? `by ${ownerName}` : ''}`}</Text>
+                                        <Text type='secondary'>{`${ownerName ? `由${ownerName}创建` : '创建'}`}</Text>
                                         <br />
                                     </>
                                 )}
-                                <Text type='secondary'>{`Last updated ${updated}`}</Text>
+                                <Text type='secondary'>{`最近更新 ${updated}`}</Text>
                             </div>
                             <div>
                                 <Dropdown

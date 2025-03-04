@@ -179,8 +179,8 @@ function trackedRectangleMapper(shape: number[]): number[] {
 function registerPlugin(): (callback: null | (() => void)) => void {
     let onTrigger: null | (() => void) = null;
     const listener = {
-        name: 'Remove annotations listener',
-        description: 'Tracker needs to know when annotations is reset in the job',
+        name: '删除标注监听器',
+        description: 'Tracker需要知道何时在作业中重置注解',
         cvat: {
             classes: {
                 Job: {
@@ -385,7 +385,7 @@ export class ToolsControlComponent extends React.PureComponent<Props, State> {
 
         try {
             this.interaction.hideMessage = message.loading({
-                content: `Waiting a response from ${activeInteractor?.name}..`,
+                content: `正在等待 ${activeInteractor?.name}..`,
                 duration: 0,
                 className: 'cvat-tracking-notice',
             });
@@ -454,7 +454,7 @@ export class ToolsControlComponent extends React.PureComponent<Props, State> {
         } catch (error: any) {
             notification.error({
                 description: <CVATMarkdown>{error.message}</CVATMarkdown>,
-                message: 'Interaction error occurred',
+                message: '发生 Interaction 错误',
                 duration: null,
             });
         }
@@ -548,7 +548,7 @@ export class ToolsControlComponent extends React.PureComponent<Props, State> {
         } catch (error: any) {
             notification.error({
                 description: <CVATMarkdown>{error.message}</CVATMarkdown>,
-                message: 'Tracking error occurred',
+                message: '发生跟踪错误',
                 duration: null,
             });
         }
@@ -578,8 +578,8 @@ export class ToolsControlComponent extends React.PureComponent<Props, State> {
 
         if (interactor.version < MIN_SUPPORTED_INTERACTOR_VERSION) {
             notification.warning({
-                message: 'Interactor API is outdated',
-                description: 'Probably, you should consider updating the serverless function',
+                message: '交互器API过时了',
+                description: '您可能应该考虑更新 serverless 函数',
             });
         }
 
@@ -617,7 +617,7 @@ export class ToolsControlComponent extends React.PureComponent<Props, State> {
                         return ReactDOM.createPortal(
                             <Col>
                                 {isTracked ? (
-                                    <CVATTooltip overlay='Disable tracking'>
+                                    <CVATTooltip overlay='禁用跟踪'>
                                         <EnvironmentFilled
                                             onClick={() => {
                                                 const filteredStates = trackedShapes.filter(
@@ -635,7 +635,7 @@ export class ToolsControlComponent extends React.PureComponent<Props, State> {
                                         />
                                     </CVATTooltip>
                                 ) : (
-                                    <CVATTooltip overlay={`Enable tracking using ${activeTracker.name}`}>
+                                    <CVATTooltip overlay={`启用跟踪方式 ${activeTracker.name}`}>
                                         <EnvironmentOutlined
                                             onClick={() => {
                                                 objectState.descriptions = [`Trackable (${activeTracker.name})`];
@@ -764,13 +764,13 @@ export class ToolsControlComponent extends React.PureComponent<Props, State> {
                     try {
                         const [tracker] = trackers.filter((_tracker: MLModel) => _tracker.id === trackerID);
                         if (!tracker) {
-                            throw new Error(`Suitable tracker with ID ${trackerID} not found in tracker list`);
+                            throw new Error(`在跟踪链接列表中找不到 ID 为 ${trackerID} 的合适跟踪链接`);
                         }
 
                         const trackableObjects = trackingData.stateless[trackerID];
                         const numOfObjects = trackableObjects.clientIDs.length;
                         hideMessage = message.loading({
-                            content: `${tracker.name}: states are being initialized for ${numOfObjects} ${
+                            content: `${tracker.name}: 正在初始化 states ${numOfObjects} ${
                                 numOfObjects > 1 ? 'objects' : 'object'
                             } ..`,
                             duration: 0,
@@ -797,7 +797,7 @@ export class ToolsControlComponent extends React.PureComponent<Props, State> {
                         delete trackingData.stateless[trackerID];
                     } catch (error: any) {
                         notification.error({
-                            message: 'Tracker initialization error',
+                            message: '跟踪器初始化错误',
                             description: <CVATMarkdown>{error.message}</CVATMarkdown>,
                             duration: null,
                         });
@@ -812,7 +812,7 @@ export class ToolsControlComponent extends React.PureComponent<Props, State> {
                     try {
                         const [tracker] = trackers.filter((_tracker: MLModel) => _tracker.id === trackerID);
                         if (!tracker) {
-                            throw new Error(`Suitable tracker with ID ${trackerID} not found in tracker list`);
+                            throw new Error(`在跟踪链接列表中找不到 ID 为 ${trackerID} 的合适跟踪链接`);
                         }
 
                         const trackableObjects = trackingData.statefull[trackerID];
@@ -820,7 +820,7 @@ export class ToolsControlComponent extends React.PureComponent<Props, State> {
                         hideMessage = message.loading({
                             content: `${tracker.name}: ${numOfObjects} ${
                                 numOfObjects > 1 ? 'objects are' : 'object is'
-                            } being tracked..`,
+                            } 被跟踪..`,
                             duration: 0,
                             className: 'cvat-tracking-notice',
                         });
@@ -851,7 +851,7 @@ export class ToolsControlComponent extends React.PureComponent<Props, State> {
                         }
                     } catch (error: any) {
                         notification.error({
-                            message: 'Tracking error',
+                            message: '跟踪错误',
                             description: <CVATMarkdown>{error.message}</CVATMarkdown>,
                             duration: null,
                         });
@@ -905,12 +905,12 @@ export class ToolsControlComponent extends React.PureComponent<Props, State> {
 
     private async initializeOpenCV(): Promise<void> {
         if (!openCVWrapper.isInitialized) {
-            const hide = message.loading('OpenCV client initialization..', 0);
+            const hide = message.loading('OpenCV 客户端初始化..', 0);
             try {
                 await openCVWrapper.initialize(() => {});
             } catch (error: any) {
                 notification.error({
-                    message: 'Could not initialize OpenCV',
+                    message: '无法初始化 OpenCV',
                     description: <CVATMarkdown>{error.message}</CVATMarkdown>,
                     duration: null,
                 });
@@ -960,7 +960,7 @@ export class ToolsControlComponent extends React.PureComponent<Props, State> {
             <>
                 <Row justify='start'>
                     <Col>
-                        <Text className='cvat-text-color'>Label</Text>
+                        <Text className='cvat-text-color'>标记</Text>
                     </Col>
                 </Row>
                 <Row justify='center'>
@@ -988,7 +988,7 @@ export class ToolsControlComponent extends React.PureComponent<Props, State> {
                 <Row justify='center' align='middle' style={{ marginTop: '5px' }}>
                     <Col>
                         <Text type='warning' className='cvat-text-color'>
-                            No available trackers found
+                            未找到可用的 trackers
                         </Text>
                     </Col>
                 </Row>
@@ -999,7 +999,7 @@ export class ToolsControlComponent extends React.PureComponent<Props, State> {
             <>
                 <Row justify='start'>
                     <Col>
-                        <Text className='cvat-text-color'>Tracker</Text>
+                        <Text className='cvat-text-color'>跟踪器</Text>
                     </Col>
                 </Row>
                 <Row align='middle' justify='center'>
@@ -1042,7 +1042,7 @@ export class ToolsControlComponent extends React.PureComponent<Props, State> {
                                 }
                             }}
                         >
-                            Track
+                            跟踪
                         </Button>
                     </Col>
                 </Row>
@@ -1063,7 +1063,7 @@ export class ToolsControlComponent extends React.PureComponent<Props, State> {
                 <Row justify='center' align='middle' style={{ marginTop: '5px' }}>
                     <Col>
                         <Text type='warning' className='cvat-text-color'>
-                            No available interactors found
+                            未找到可用的交互器
                         </Text>
                     </Col>
                 </Row>
@@ -1123,7 +1123,7 @@ export class ToolsControlComponent extends React.PureComponent<Props, State> {
                                 this.setState({ convertMasksToPolygons: checked });
                             }}
                         />
-                        <Text>Convert masks to polygons</Text>
+                        <Text>蒙版转换为多边形</Text>
                     </div>
 
                     {renderStartWithBox && (
@@ -1132,7 +1132,7 @@ export class ToolsControlComponent extends React.PureComponent<Props, State> {
                                 checked={startInteractingWithBox}
                                 onChange={(value: boolean) => this.setState({ startInteractingWithBox: value })}
                             />
-                            <Text>Start with a bounding box</Text>
+                            <Text>从边界框开始</Text>
                         </div>
                     )}
                 </div>
@@ -1164,7 +1164,7 @@ export class ToolsControlComponent extends React.PureComponent<Props, State> {
                                 }
                             }}
                         >
-                            Interact
+                            交互
                         </Button>
                     </Col>
                 </Row>
@@ -1182,7 +1182,7 @@ export class ToolsControlComponent extends React.PureComponent<Props, State> {
                 <Row justify='center' align='middle' style={{ marginTop: '5px' }}>
                     <Col>
                         <Text type='warning' className='cvat-text-color'>
-                            No available detectors found
+                            未找到可用的检测器
                         </Text>
                     </Col>
                 </Row>
@@ -1367,7 +1367,7 @@ export class ToolsControlComponent extends React.PureComponent<Props, State> {
                     } catch (error: any) {
                         notification.error({
                             description: <CVATMarkdown>{error.message}</CVATMarkdown>,
-                            message: 'Detection error occurred',
+                            message: '发生 Detection 错误',
                             duration: null,
                         });
                     } finally {
@@ -1384,7 +1384,7 @@ export class ToolsControlComponent extends React.PureComponent<Props, State> {
                 <Row justify='start'>
                     <Col>
                         <Text className='cvat-text-color' strong>
-                            AI Tools
+                            AI 工具
                         </Text>
                     </Col>
                 </Row>
@@ -1402,7 +1402,7 @@ export class ToolsControlComponent extends React.PureComponent<Props, State> {
                         ),
                     }, {
                         key: 'detectors',
-                        label: 'Detectors',
+                        label: '识别器',
                         children: this.renderDetectorBlock(),
                     }, {
                         key: 'trackers',
@@ -1463,14 +1463,14 @@ export class ToolsControlComponent extends React.PureComponent<Props, State> {
 
         const detectionContent: JSX.Element | null = showDetectionContent ? (
             <Modal
-                title='Making a server request'
+                title='请求服务器'
                 zIndex={Number.MAX_SAFE_INTEGER}
                 open
                 destroyOnClose
                 closable={false}
                 footer={[]}
             >
-                <Text>Waiting for a server response..</Text>
+                <Text>等待服务器返回..</Text>
                 <LoadingOutlined style={{ marginLeft: '10px' }} />
             </Modal>
         ) : null;

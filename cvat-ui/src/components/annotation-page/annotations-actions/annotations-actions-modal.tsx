@@ -356,20 +356,20 @@ function AnnotationsActionsModalContent(props: Props): JSX.Element {
                     <Alert
                         message={(
                             targetObjectState ? (
-                                <Text> Selected action will be applied to the current object </Text>
+                                <Text> 所选作将应用于当前对象 </Text>
                             ) : (
                                 <div>
-                                    <Text>Actions allow executing certain algorithms on </Text>
+                                    <Text>操作允许执行某些算法 </Text>
                                     <Text strong>
                                         <a
                                             target='_blank'
                                             rel='noopener noreferrer'
                                             href={config.FILTERS_GUIDE_URL}
                                         >
-                                            filtered
+                                            过滤
                                         </a>
                                     </Text>
-                                    <Text> annotations. </Text>
+                                    <Text> 标注. </Text>
                                 </div>
                             )
                         )}
@@ -381,7 +381,7 @@ function AnnotationsActionsModalContent(props: Props): JSX.Element {
                 <Col span={24} className='cvat-action-runner-list'>
                     <Row>
                         <Col span={24}>
-                            <Text strong className='cvat-text-color'>Select action</Text>
+                            <Text strong className='cvat-text-color'>选择操作</Text>
                             <hr />
                         </Col>
                         <Col span={24}>
@@ -416,11 +416,11 @@ function AnnotationsActionsModalContent(props: Props): JSX.Element {
                         <Col span={24} className='cvat-action-runner-frames'>
                             <Row>
                                 <Col span={24}>
-                                    <Text strong>Specify frames to apply the action </Text>
+                                    <Text strong>指定要应用动作的帧 </Text>
                                     <hr />
                                 </Col>
                                 <Col span={24}>
-                                    <Text> Starting from frame </Text>
+                                    <Text> 从帧开始 </Text>
                                     <InputNumber
                                         value={frameFrom}
                                         min={jobInstance.startFrame}
@@ -464,7 +464,7 @@ function AnnotationsActionsModalContent(props: Props): JSX.Element {
                                 <Col span={24} className='cvat-action-runner-frames-predefined'>
                                     <Row>
                                         <Col span={24}>
-                                            <Text strong>Or choose one of predefined options </Text>
+                                            <Text strong>或者选择一个预定义的选项 </Text>
                                             <hr />
                                         </Col>
                                         <Col span={24}>
@@ -475,7 +475,7 @@ function AnnotationsActionsModalContent(props: Props): JSX.Element {
                                                     dispatch(reducerActions.updateFrameTo(current));
                                                 }}
                                             >
-                                                Current frame
+                                                当前帧
                                             </Button>
                                             <Button
                                                 onClick={() => {
@@ -483,7 +483,7 @@ function AnnotationsActionsModalContent(props: Props): JSX.Element {
                                                     dispatch(reducerActions.updateFrameTo(jobInstance.stopFrame));
                                                 }}
                                             >
-                                                All frames
+                                                所有帧
                                             </Button>
                                             <Button
                                                 onClick={() => {
@@ -492,7 +492,7 @@ function AnnotationsActionsModalContent(props: Props): JSX.Element {
                                                     dispatch(reducerActions.updateFrameTo(jobInstance.stopFrame));
                                                 }}
                                             >
-                                                From current
+                                                从当前
                                             </Button>
                                             <Button
                                                 onClick={() => {
@@ -501,7 +501,7 @@ function AnnotationsActionsModalContent(props: Props): JSX.Element {
                                                     dispatch(reducerActions.updateFrameTo(current));
                                                 }}
                                             >
-                                                Up to current
+                                                截至当前
                                             </Button>
                                         </Col>
                                     </Row>
@@ -515,7 +515,7 @@ function AnnotationsActionsModalContent(props: Props): JSX.Element {
                     <Col span={24} className='cvat-action-runner-action-parameters'>
                         <Row>
                             <Col span={24}>
-                                <Text strong>Setup action parameters </Text>
+                                <Text strong>设置动作参数 </Text>
                                 <hr />
                             </Col>
                             {Object.entries(activeAction.parameters)

@@ -28,8 +28,8 @@ function ProjectActionsMenuComponent(props: Props): JSX.Element {
 
     const onDeleteProject = useCallback((): void => {
         Modal.confirm({
-            title: `The project ${projectInstance.id} will be deleted`,
-            content: 'All related data (images, annotations) will be lost. Continue?',
+            title: `项目 ${projectInstance.id} 将被删除`,
+            content: '所有相关数据(图片, 标注)都会丢失，继续？',
             className: 'cvat-modal-confirm-remove-project',
             onOk: () => {
                 dispatch(deleteProjectAsync(projectInstance));
@@ -38,20 +38,20 @@ function ProjectActionsMenuComponent(props: Props): JSX.Element {
                 type: 'primary',
                 danger: true,
             },
-            okText: 'Delete',
+            okText: '删除',
         });
     }, []);
 
     const menuItems: [JSX.Element, number][] = [];
     menuItems.push([(
         <Menu.Item key='export-dataset' onClick={() => dispatch(exportActions.openExportDatasetModal(projectInstance))}>
-            Export dataset
+            导出数据集
         </Menu.Item>
     ), 0]);
 
     menuItems.push([(
         <Menu.Item key='import-dataset' onClick={() => dispatch(importActions.openImportDatasetModal(projectInstance))}>
-            Import dataset
+            导入数据集
         </Menu.Item>
     ), 10]);
 
@@ -60,7 +60,7 @@ function ProjectActionsMenuComponent(props: Props): JSX.Element {
             key='backup-project'
             onClick={() => dispatch(exportActions.openExportBackupModal(projectInstance))}
         >
-            Backup Project
+            备份项目
         </Menu.Item>
     ), 20]);
 
@@ -76,7 +76,7 @@ function ProjectActionsMenuComponent(props: Props): JSX.Element {
                     return false;
                 }}
             >
-                View analytics
+                查看分析
             </a>
         </Menu.Item>
     ), 30]);
@@ -93,7 +93,7 @@ function ProjectActionsMenuComponent(props: Props): JSX.Element {
                     return false;
                 }}
             >
-                Setup webhooks
+                配置webhooks
             </a>
         </Menu.Item>
     ), 40]);
@@ -102,7 +102,7 @@ function ProjectActionsMenuComponent(props: Props): JSX.Element {
         <React.Fragment key='delete'>
             <Menu.Divider />
             <Menu.Item key='delete' onClick={onDeleteProject}>
-                Delete
+                删除
             </Menu.Item>
         </React.Fragment>
     ), 50]);

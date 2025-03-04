@@ -48,7 +48,7 @@ function handleTimePeriod(interval: DateIntervals): [string, string] {
             return [now.format(), now.subtract(365, 'd').format()];
         }
         default: {
-            throw Error(`Date interval is not supported: ${interval}`);
+            throw Error(`不支持日期间隔: ${interval}`);
         }
     }
 }
@@ -117,7 +117,7 @@ function AnalyticsPage(): JSX.Element {
             }
         } catch (error: unknown) {
             notification.error({
-                message: `Could not receive requested ${type}`,
+                message: `无法接收请求 ${type}`,
                 description: `${error instanceof Error ? error.message : ''}`,
             });
         }
@@ -151,7 +151,7 @@ function AnalyticsPage(): JSX.Element {
             }
         } catch (error: unknown) {
             notification.error({
-                message: 'Could not receive requested report',
+                message: '无法收到要求的报告',
                 description: `${error instanceof Error ? error.message : ''}`,
             });
         }
@@ -170,8 +170,8 @@ function AnalyticsPage(): JSX.Element {
             });
         } else {
             notification.error({
-                message: 'Could not load this page',
-                description: `Not valid resource ${requestedInstanceType} #${requestedInstanceID}`,
+                message: '无法加载此页面',
+                description: `资源无效 ${requestedInstanceType} #${requestedInstanceID}`,
             });
         }
 
@@ -212,7 +212,7 @@ function AnalyticsPage(): JSX.Element {
         }).catch((error: unknown) => {
             if (isMounted()) {
                 notification.error({
-                    message: 'Error occurred during requesting performance report',
+                    message: '请求性能报告时出错',
                     description: error instanceof Error ? error.message : '',
                 });
             }
@@ -244,7 +244,7 @@ function AnalyticsPage(): JSX.Element {
         title = (
             <Col>
                 <Title level={4} className='cvat-text-color'>
-                    Analytics for
+                    分析
                     {' '}
                     {analyticsFor}
                 </Title>

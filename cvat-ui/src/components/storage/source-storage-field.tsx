@@ -35,7 +35,7 @@ export default function SourceStorageField(props: Props): JSX.Element {
 
     return (
         <StorageWithSwitchField
-            storageLabel='Source storage'
+            storageLabel='来源存储'
             storageName='sourceStorage'
             switchName='useProjectSourceStorage'
             instanceId={instanceId}

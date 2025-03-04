@@ -26,8 +26,8 @@ export interface Props {
 
 const componentShortcuts = {
     SWITCH_SLICE_MODE_STANDARD_CONTROLS: {
-        name: 'Slice mode',
-        description: 'Activate or deactivate a mode to slice a polygon/mask',
+        name: '切片模式',
+        description: '取消激活的分割 蒙版/多边形图形',
         sequences: ['alt+j'],
         scope: ShortcutScope.STANDARD_WORKSPACE_CONTROLS,
     },

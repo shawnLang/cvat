@@ -78,7 +78,7 @@ export default function LabelsListComponent(): JSX.Element {
             <div className='cvat-objects-sidebar-issues-list-header'>
                 <Row justify='start' align='middle'>
                     <Col>
-                        <Text>{`Items: ${frameIssues.length}`}</Text>
+                        <Text>{`条目: ${frameIssues.length}`}</Text>
                     </Col>
                     <Col offset={1}>
                         <CVATTooltip title='Find the previous frame with issues'>
@@ -91,7 +91,7 @@ export default function LabelsListComponent(): JSX.Element {
                         </CVATTooltip>
                     </Col>
                     <Col offset={2}>
-                        <CVATTooltip title='Show/hide all issues'>
+                        <CVATTooltip title='显示隐藏所有问题'>
                             {issuesHidden ? (
                                 <EyeInvisibleFilled
                                     className='cvat-issues-sidebar-hidden-issues'
@@ -106,7 +106,7 @@ export default function LabelsListComponent(): JSX.Element {
                         </CVATTooltip>
                     </Col>
                     <Col offset={2}>
-                        <CVATTooltip title='Show/hide resolved issues'>
+                        <CVATTooltip title='显示隐藏已解决的问题'>
                             { issuesResolvedHidden ? (
                                 <CheckCircleFilled
                                     className='cvat-issues-sidebar-hidden-resolved-status'
@@ -124,7 +124,7 @@ export default function LabelsListComponent(): JSX.Element {
                     {
                         workspace === Workspace.REVIEW ? (
                             <Col offset={2}>
-                                <CVATTooltip title='Show Ground truth annotations and conflicts'>
+                                <CVATTooltip title='显示基准真相标注和冲突'>
                                     <Icon
                                         className={
                                             `cvat-objects-sidebar-show-ground-truth ${showGroundTruth ? 'cvat-objects-sidebar-show-ground-truth-active' : ''}`
@@ -174,12 +174,12 @@ export default function LabelsListComponent(): JSX.Element {
                                 <Row justify='space-between'>
                                     <Col>
                                         <Text strong>
-                                            {`#${frameIssue.id} • Issue`}
+                                            {`#${frameIssue.id} • 问题`}
                                         </Text>
                                     </Col>
                                     <Col offset={1}>
                                         <Text type='secondary'>
-                                            {`created ${moment(frameIssue.createdDate).fromNow()}`}
+                                            {`已创建 ${moment(frameIssue.createdDate).fromNow()}`}
                                         </Text>
                                     </Col>
                                 </Row>
@@ -236,7 +236,7 @@ export default function LabelsListComponent(): JSX.Element {
                             <Row>
                                 <Text strong>
                                     {`#${frameConflict.id} • ${frameConflict.severity === ConflictSeverity.WARNING ?
-                                        'Warning' : 'Conflict'}`}
+                                        '警告' : '冲突'}`}
                                 </Text>
                             </Row>
                             <Row>

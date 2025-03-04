@@ -43,10 +43,10 @@ function ShortcutsSettingsComponent(props: Props): JSX.Element {
 
     const onRestoreDefaults = useCallback(() => {
         Modal.confirm({
-            title: 'Are you sure you want to restore defaults?',
-            okText: 'Yes',
+            title: '是否确实要恢复默认值？',
+            okText: '确认',
             className: 'cvat-shortcuts-settings-restore-modal',
-            cancelText: 'No',
+            cancelText: '取消',
             onOk: () => {
                 const currentSettings = localStorage.getItem('clientSettings');
                 dispatch(shortcutsActions.registerShortcuts({ ...shortcuts.defaultState }));
@@ -136,18 +136,18 @@ function ShortcutsSettingsComponent(props: Props): JSX.Element {
                     <Flex gap={4}>
                         <Search
                             size='large'
-                            placeholder='Search for a shortcut here...'
+                            placeholder='在此处搜索快捷方式...'
                             allowClear
                             onChange={onSearchChange}
                             className='cvat-shortcuts-settings-search'
                         />
-                        <Button size='large' onClick={onRestoreDefaults} className='cvat-shortcuts-settings-restore'>Restore Defaults</Button>
+                        <Button size='large' onClick={onRestoreDefaults} className='cvat-shortcuts-settings-restore'>恢复默认值</Button>
                     </Flex>
                 </Col>
             </Row>
             <Row className='cvat-shortcuts-setting'>
                 <Col span={24}>
-                    <Alert message='Shortcut may consist of any combination of modifiers (alt, ctrl, or shift) and one non-modifier at the end. Some key combinations may be reserved by the browser and cannot be overridden in CVAT.' type='warning' showIcon />
+                    <Alert message='快捷键可以由修饰符（alt、ctrl或shift）的任意组合和末尾的一个非修饰符组成。某些键组合可能由浏览器保留，并且无法在CVAT中覆盖。' type='warning' showIcon />
                     {items ? (
                         <Collapse
                             items={items}

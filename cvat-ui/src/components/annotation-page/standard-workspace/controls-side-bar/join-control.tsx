@@ -24,8 +24,8 @@ export interface Props {
 
 const componentShortcuts = {
     SWITCH_JOIN_MODE_STANDARD_CONTROLS: {
-        name: 'Join mode',
-        description: 'Activate or deactivate a mode where you can join masks',
+        name: '加入模式',
+        description: '激活或停用可加入蒙版的模式',
         sequences: ['j'],
         scope: ShortcutScope.STANDARD_WORKSPACE_CONTROLS,
     },
@@ -75,7 +75,7 @@ function JoinControl(props: Props): JSX.Element {
                 keyMap={subKeyMap(componentShortcuts, keyMap)}
                 handlers={handlers}
             />
-            <CVATTooltip title={`Join masks ${normalizedKeyMap.SWITCH_JOIN_MODE_STANDARD_CONTROLS}`} placement='right'>
+            <CVATTooltip title={`合并蒙版 ${normalizedKeyMap.SWITCH_JOIN_MODE_STANDARD_CONTROLS}`} placement='right'>
                 <Icon {...dynamicIconProps} component={JoinIcon} />
             </CVATTooltip>
         </>

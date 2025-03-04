@@ -197,7 +197,7 @@ function HeaderComponent(props: Props): JSX.Element {
         }).catch((error: unknown) => {
             setOrganizationList([]);
             notification.error({
-                message: 'Could not receive a list of organizations',
+                message: '无法获取组织列表',
                 description: error instanceof Error ? error.message : '',
             });
         });
@@ -226,21 +226,21 @@ function HeaderComponent(props: Props): JSX.Element {
     aboutLinks.push([(
         <Col key='changelog'>
             <a href={CHANGELOG_URL} target='_blank' rel='noopener noreferrer'>
-                What&apos;s new?
+                新东西？
             </a>
         </Col>
     ), 0]);
     aboutLinks.push([(
         <Col key='license'>
             <a href={LICENSE_URL} target='_blank' rel='noopener noreferrer'>
-                MIT License
+                MIT 协议
             </a>
         </Col>
     ), 10]);
     aboutLinks.push([(
         <Col key='discord'>
             <a href={DISCORD_URL} target='_blank' rel='noopener noreferrer'>
-                Find us on Discord
+                在 Discord 找到我们
             </a>
         </Col>
     ), 20]);
@@ -256,11 +256,11 @@ function HeaderComponent(props: Props): JSX.Element {
                 <div>
                     <p>{`${about.server.description}`}</p>
                     <p>
-                        <Text strong>Server version:</Text>
+                        <Text strong>服务器版本:</Text>
                         <Text type='secondary'>{` ${about.server.version}`}</Text>
                     </p>
                     <p>
-                        <Text strong>UI version:</Text>
+                        <Text strong>界面版本:</Text>
                         <Text type='secondary'>{` ${about.packageVersion.ui}`}</Text>
                     </p>
                     <Row justify='space-around'>
@@ -313,7 +313,7 @@ function HeaderComponent(props: Props): JSX.Element {
             onClick: (): void => {
                 window.open('/admin', '_blank');
             },
-            label: 'Admin page',
+            label: '管理页面',
         }, 0]);
     }
 
@@ -322,34 +322,34 @@ function HeaderComponent(props: Props): JSX.Element {
     menuItems.push([{
         key: 'organization',
         icon: organizationFetching || listFetching ? <LoadingOutlined /> : <TeamOutlined />,
-        label: 'Organization',
+        label: '组织',
         disabled: organizationFetching || listFetching,
         children: [
             ...(currentOrganization ? [{
                 key: 'open_organization',
                 icon: <SettingOutlined />,
-                label: 'Settings',
+                label: '设置',
                 className: 'cvat-header-menu-open-organization',
                 onClick: () => history.push('/organization'),
             }] : []), {
                 key: 'invitations',
                 icon: <MailOutlined />,
-                label: 'Invitations',
+                label: '邀请',
                 className: 'cvat-header-menu-organization-invitations-item',
                 onClick: () => history.push('/invitations'),
             }, {
                 key: 'create_organization',
                 icon: <PlusOutlined />,
-                label: 'Create',
+                label: '创建',
                 className: 'cvat-header-menu-create-organization',
                 onClick: () => history.push('/organizations/create'),
             },
             ...(!!organizationsList && viewType === 'list' ? [{
                 key: 'switch_organization',
-                label: 'Switch organization',
+                label: '切换组织',
                 onClick: () => {
                     Modal.confirm({
-                        title: 'Select an organization',
+                        title: '选择组织',
                         okButtonProps: {
                             style: { display: 'none' },
                         },
@@ -368,7 +368,7 @@ function HeaderComponent(props: Props): JSX.Element {
                 type: 'divider' as const,
             }, {
                 key: '$personal',
-                label: 'Personal workspace',
+                label: '个人空间',
                 className: !currentOrganization ? 'cvat-header-menu-active-organization-item' : 'cvat-header-menu-organization-item',
                 onClick: resetOrganization,
             }, ...organizationsList.map((organization: Organization) => ({
@@ -385,14 +385,14 @@ function HeaderComponent(props: Props): JSX.Element {
         icon: <SettingOutlined />,
         onClick: () => switchSettingsModalVisible(true),
         title: `Press ${switchSettingsShortcut} to switch`,
-        label: 'Settings',
+        label: '设置',
     }, 20]);
 
     menuItems.push([{
         key: 'about',
         icon: <InfoCircleOutlined />,
         onClick: () => showAboutModal(),
-        label: 'About',
+        label: '关于',
     }, 30]);
 
     if (renderChangePasswordItem) {
@@ -401,7 +401,7 @@ function HeaderComponent(props: Props): JSX.Element {
             icon: changePasswordFetching ? <LoadingOutlined /> : <EditOutlined />,
             className: 'cvat-header-menu-change-password',
             onClick: () => switchChangePasswordModalVisible(true),
-            label: 'Change password',
+            label: '修改密码',
             disabled: changePasswordFetching,
         }, 40]);
     }
@@ -410,7 +410,7 @@ function HeaderComponent(props: Props): JSX.Element {
         key: 'logout',
         icon: logoutFetching ? <LoadingOutlined /> : <LogoutOutlined />,
         onClick: () => history.push('/auth/logout'),
-        label: 'Logout',
+        label: '登出',
         disabled: logoutFetching,
     }, 50]);
 
@@ -441,7 +441,7 @@ function HeaderComponent(props: Props): JSX.Element {
                         history.push('/projects');
                     }}
                 >
-                    Projects
+                    项目
                 </Button>
                 <Button
                     className={getButtonClassName('tasks')}
@@ -453,7 +453,7 @@ function HeaderComponent(props: Props): JSX.Element {
                         history.push('/tasks');
                     }}
                 >
-                    Tasks
+                    任务
                 </Button>
                 <Button
                     className={getButtonClassName('jobs')}
@@ -465,7 +465,7 @@ function HeaderComponent(props: Props): JSX.Element {
                         history.push('/jobs');
                     }}
                 >
-                    Jobs
+                    作业
                 </Button>
                 <Button
                     className={getButtonClassName('cloudstorages')}
@@ -477,7 +477,7 @@ function HeaderComponent(props: Props): JSX.Element {
                         history.push('/cloudstorages');
                     }}
                 >
-                    Cloud Storages
+                    云存储
                 </Button>
                 <Button
                     className={getButtonClassName('requests')}
@@ -489,7 +489,7 @@ function HeaderComponent(props: Props): JSX.Element {
                         history.push('/requests');
                     }}
                 >
-                    Requests
+                    请求
                 </Button>
                 {isModelsPluginActive ? (
                     <Button
@@ -502,7 +502,7 @@ function HeaderComponent(props: Props): JSX.Element {
                             history.push('/models');
                         }}
                     >
-                        Models
+                        模型
                     </Button>
                 ) : null}
                 {isAnalyticsPluginActive && user.hasAnalyticsAccess ? (
@@ -515,12 +515,12 @@ function HeaderComponent(props: Props): JSX.Element {
                             window.open('/analytics', '_blank');
                         }}
                     >
-                        Analytics
+                        分析
                     </Button>
                 ) : null}
             </div>
             <div className='cvat-right-header'>
-                <CVATTooltip overlay='Click to open repository'>
+                <CVATTooltip overlay='点击打开存储库'>
                     <Button
                         icon={<GithubOutlined />}
                         size='large'
@@ -533,7 +533,7 @@ function HeaderComponent(props: Props): JSX.Element {
                         }}
                     />
                 </CVATTooltip>
-                <CVATTooltip overlay='Click to open guide'>
+                <CVATTooltip overlay='点击打开指南'>
                     <Button
                         icon={<QuestionCircleOutlined />}
                         size='large'

@@ -20,7 +20,7 @@ function StatesOrderingSelectorComponent(props: StatesOrderingSelectorComponentP
 
     return (
         <Col>
-            <Text>Sort by</Text>
+            <Text>排序</Text>
             <Select
                 size='small'
                 className='cvat-objects-sidebar-ordering-selector'
@@ -29,16 +29,16 @@ function StatesOrderingSelectorComponent(props: StatesOrderingSelectorComponentP
                 onChange={changeStatesOrdering}
             >
                 <Select.Option key={StatesOrdering.ID_DESCENT} value={StatesOrdering.ID_DESCENT}>
-                    {StatesOrdering.ID_DESCENT}
+                    ID倒序
                 </Select.Option>
                 <Select.Option key={StatesOrdering.ID_ASCENT} value={StatesOrdering.ID_ASCENT}>
-                    {StatesOrdering.ID_ASCENT}
+                    ID升序
                 </Select.Option>
                 <Select.Option key={StatesOrdering.UPDATED} value={StatesOrdering.UPDATED}>
-                    {StatesOrdering.UPDATED}
+                    更新时间
                 </Select.Option>
                 <Select.Option key={StatesOrdering.Z_ORDER} value={StatesOrdering.Z_ORDER}>
-                    {StatesOrdering.Z_ORDER}
+                    Z顺序
                 </Select.Option>
             </Select>
         </Col>

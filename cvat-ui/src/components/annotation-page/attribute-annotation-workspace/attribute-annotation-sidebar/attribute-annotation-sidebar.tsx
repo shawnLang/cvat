@@ -54,55 +54,55 @@ interface LabelAttrMap {
 const componentShortcuts = {
     NEXT_ATTRIBUTE: {
         name: 'Next attribute',
-        description: 'Go to the next attribute',
+        description: '转到下一个属性',
         sequences: ['down'],
         scope: ShortcutScope.ATTRIBUTE_ANNOTATION_WORKSPACE,
     },
     PREVIOUS_ATTRIBUTE: {
         name: 'Previous attribute',
-        description: 'Go to the previous attribute',
+        description: '转到上一个属性',
         sequences: ['up'],
         scope: ShortcutScope.ATTRIBUTE_ANNOTATION_WORKSPACE,
     },
     NEXT_OBJECT: {
         name: 'Next object',
-        description: 'Go to the next object',
+        description: '转到下一个对象',
         sequences: ['tab'],
         scope: ShortcutScope.ATTRIBUTE_ANNOTATION_WORKSPACE,
     },
     PREVIOUS_OBJECT: {
         name: 'Previous object',
-        description: 'Go to the previous object',
+        description: '转到上一个对象',
         sequences: ['shift+tab'],
         scope: ShortcutScope.ATTRIBUTE_ANNOTATION_WORKSPACE,
     },
     SWITCH_LOCK: {
         name: 'Lock/unlock an object',
-        description: 'Change locked state for an active object',
+        description: '更改活动对象的锁定状态',
         sequences: ['l'],
         scope: ShortcutScope.OBJECTS_SIDEBAR,
     },
     SWITCH_OCCLUDED: {
         name: 'Switch occluded',
-        description: 'Change occluded property for an active object',
+        description: '更改活动对象的 occluded 属性',
         sequences: ['q', '/'],
         scope: ShortcutScope.OBJECTS_SIDEBAR,
     },
     SWITCH_PINNED: {
         name: 'Switch pinned property',
-        description: 'Change pinned property for an active object',
+        description: '更改活动对象的固定属性',
         sequences: ['p'],
         scope: ShortcutScope.OBJECTS_SIDEBAR,
     },
     NEXT_KEY_FRAME: {
         name: 'Next keyframe',
-        description: 'Go to the next keyframe of an active track',
+        description: '转到活动轨迹的下一个关键帧',
         sequences: ['r'],
         scope: ShortcutScope.OBJECTS_SIDEBAR,
     },
     PREV_KEY_FRAME: {
         name: 'Previous keyframe',
-        description: 'Go to the previous keyframe of an active track',
+        description: '转到活动轨迹的上一个关键帧',
         sequences: ['e'],
         scope: ShortcutScope.OBJECTS_SIDEBAR,
     },
@@ -412,7 +412,7 @@ function AttributeAnnotationSidebar(props: StateToProps & DispatchToProps): JSX.
             </span>
             <div className='cvat-sidebar-collapse-button-spacer' />
             <div className='attribute-annotations-sidebar-not-found-wrapper'>
-                <Text strong>No objects found</Text>
+                <Text strong>未找到对象</Text>
             </div>
         </Layout.Sider>
     );

@@ -59,7 +59,7 @@ function WebhookItem(props: WebhookItemProps): JSX.Element | null {
     } = webhookInstance;
 
     const updated = moment(updatedDate).fromNow();
-    const created = moment(createdDate).format('MMMM Do YYYY');
+    const created = moment(createdDate).format('YYYY-MM-DD');
     const username = owner ? owner.username : null;
 
     const { lastStatus } = webhookInstance;
@@ -162,7 +162,7 @@ function WebhookItem(props: WebhookItemProps): JSX.Element | null {
                                                 return false;
                                             }}
                                         >
-                                            Edit
+                                            编辑
                                         </a>
                                     </Menu.Item>
                                     <Menu.Item
@@ -186,7 +186,7 @@ function WebhookItem(props: WebhookItemProps): JSX.Element | null {
                             )}
                         >
                             <div className='cvat-webhooks-page-actions-button'>
-                                <Text className='cvat-text-color'>Actions</Text>
+                                <Text className='cvat-text-color'>操作</Text>
                                 <MoreOutlined className='cvat-menu-icon' />
                             </div>
                         </Dropdown>

@@ -109,7 +109,7 @@ export default function IssueDialog(props: Props): JSX.Element {
                     author={<Text strong>{_comment.owner ? _comment.owner.username : 'Unknown'}</Text>}
                     content={<p>{_comment.message}</p>}
                     datetime={(
-                        <CVATTooltip title={created.format('MMMM Do YYYY')}>
+                        <CVATTooltip title={created.format('YYYY-MM-DD')}>
                             <span>{diff}</span>
                         </CVATTooltip>
                     )}

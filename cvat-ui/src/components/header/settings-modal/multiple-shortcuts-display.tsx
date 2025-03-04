@@ -42,16 +42,16 @@ function MultipleShortcutsDisplay(props: Props): JSX.Element {
         const conflictingShortcuts: Record<string, KeyMapItem> | null = conflictDetector(shortcut, keyMap);
         if (conflictingShortcuts) {
             Modal.confirm({
-                title: 'Conflicting shortcuts detected',
+                title: '检测到冲突的快捷方式',
                 content: (
                     <p>
-                        Added sequence conflicts with the following shortcuts:
+                        添加了与以下快捷键的序列冲突：
                         <br />
                         {Object.values(conflictingShortcuts).map((conflictingShortcut: KeyMapItem, idx) => (
                             <span key={`${idx} ${conflictingShortcut.name}`}>
                                 <strong>{conflictingShortcut.name}</strong>
                                 {' '}
-                                in the scope
+                                在范围
                                 {' '}
                                 <strong>
                                     {ShortcutScope[conflictingShortcut.scope].split('_').join(' ')}
@@ -59,7 +59,7 @@ function MultipleShortcutsDisplay(props: Props): JSX.Element {
                                 <br />
                             </span>
                         ))}
-                        Would you like to unset the conflicting shortcuts?
+                        是否要取消设置冲突的快捷方式？
                     </p>
                 ),
                 onOk: () => {
@@ -77,7 +77,7 @@ function MultipleShortcutsDisplay(props: Props): JSX.Element {
         if (containsMoreThanOneNonModifierKey) {
             Modal.error({
                 title: 'Invalid key combination',
-                content: 'Only one non-modifier key can be used in a combination',
+                content: '组合中只能使用一个非修饰键',
             });
             setPressedKeys([[]]);
             setCurrentIdx(0);
@@ -153,7 +153,7 @@ function MultipleShortcutsDisplay(props: Props): JSX.Element {
             suffixIcon={null}
             dropdownStyle={{ display: 'none' }}
             mode='multiple'
-            placeholder='Register shortcut...'
+            placeholder='注册快捷方式...'
             value={sequences}
             className='cvat-shortcuts-settings-select'
             onKeyDown={handleKeyDown}

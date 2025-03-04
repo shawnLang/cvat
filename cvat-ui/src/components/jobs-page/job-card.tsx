@@ -58,6 +58,19 @@ function JobCardComponent(props: Props): JSX.Element {
     } else if (job.type === JobType.ANNOTATION && job.consensusReplicas > 0) {
         tag = 'Consensus';
     }
+    // 添加 state 和 stage 的映射对象
+    const stateMap = {
+        new: '刚新建',
+        'in progress': '进行中',
+        rejected: '已拒绝',
+        completed: '已完成',
+    };
+
+    const stageMap = {
+        annotation: '标注',
+        validation: '验证',
+        acceptance: '接受',
+    };
 
     return (
         <Card
@@ -84,12 +97,13 @@ function JobCardComponent(props: Props): JSX.Element {
             hoverable
         >
             <Descriptions column={1} size='small'>
-                <Descriptions.Item label='Stage and state'>{`${job.stage} ${job.state}`}</Descriptions.Item>
-                <Descriptions.Item label='Frames'>{job.stopFrame - job.startFrame + 1}</Descriptions.Item>
+                <Descriptions.Item label='阶段'>{stageMap[job.stage] || job.stage}</Descriptions.Item>
+                <Descriptions.Item label='状态'>{stateMap[job.state] || job.state}</Descriptions.Item>
+                <Descriptions.Item label='帧数'>{job.stopFrame - job.startFrame + 1}</Descriptions.Item>
                 {job.assignee ? (
-                    <Descriptions.Item label='Assignee'>{job.assignee.username}</Descriptions.Item>
+                    <Descriptions.Item label='分配'>{job.assignee.username}</Descriptions.Item>
                 ) : (
-                    <Descriptions.Item label='Assignee'> </Descriptions.Item>
+                    <Descriptions.Item label='分配'> </Descriptions.Item>
                 )}
             </Descriptions>
             <Dropdown

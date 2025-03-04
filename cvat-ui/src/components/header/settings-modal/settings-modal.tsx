@@ -43,7 +43,7 @@ function SettingsModal(props: SettingsModalProps): JSX.Element {
             dispatch(restoreSettingsAsync());
         } catch {
             notification.error({
-                message: 'Failed to load settings from local storage',
+                message: '无法从本地存储读取设置',
                 className: 'cvat-notification-notice-load-settings-fail',
             });
         } finally {
@@ -54,19 +54,19 @@ function SettingsModal(props: SettingsModalProps): JSX.Element {
     const tabItems = [
         {
             key: 'player',
-            label: <Text>Player</Text>,
+            label: <Text>播放器</Text>,
             icon: <PlayCircleOutlined />,
             children: <PlayerSettingsContainer />,
         },
         {
             key: 'workspace',
-            label: <Text>Workspace</Text>,
+            label: <Text>工作空间</Text>,
             icon: <LaptopOutlined />,
             children: <WorkspaceSettingsContainer />,
         },
         {
             key: 'shortcuts',
-            label: <Text>Shortcuts</Text>,
+            label: <Text>快捷键</Text>,
             icon: <BuildOutlined />,
             children: <ShortcutsSettingsContainer />,
         },
@@ -74,14 +74,14 @@ function SettingsModal(props: SettingsModalProps): JSX.Element {
 
     return (
         <Modal
-            title='Settings'
+            title='设置'
             open={visible}
             onCancel={onClose}
             width={800}
             className='cvat-settings-modal'
             footer={(
                 <Button className='cvat-close-settings-button' type='default' onClick={onClose}>
-                    Close
+                    关闭
                 </Button>
             )}
         >

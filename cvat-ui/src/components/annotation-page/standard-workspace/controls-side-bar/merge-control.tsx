@@ -32,7 +32,7 @@ function MergeControl(props: Props): JSX.Element {
         <Icon className='cvat-merge-control cvat-disabled-canvas-control' component={MergeIcon} />
     ) : (
         <CVATTooltip
-            title={`Merge shapes/tracks ${
+            title={`合并图形/tracks ${
                 canvasInstance instanceof Canvas ?
                     normalizedKeyMap.SWITCH_MERGE_MODE_STANDARD_CONTROLS :
                     normalizedKeyMap.SWITCH_MERGE_MODE_STANDARD_3D_CONTROLS}`}

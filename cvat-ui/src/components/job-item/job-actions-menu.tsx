@@ -56,8 +56,8 @@ function JobActionsMenu(props: Props): JSX.Element {
                 history.push(`/tasks/${job.taskId}/jobs/${job.id}/analytics`);
             } else if (action.key === Actions.MERGE_SPECIFIC_CONSENSUS_JOBS) {
                 Modal.confirm({
-                    title: 'The consensus job will be merged',
-                    content: 'Existing annotations in the parent job will be updated. Continue?',
+                    title: '共同作业将被合并',
+                    content: '父作业中的现有标注将被更新。继续？',
                     className: 'cvat-modal-confirm-consensus-merge-job',
                     onOk: () => {
                         dispatch(mergeConsensusJobsAsync(job));
@@ -70,8 +70,8 @@ function JobActionsMenu(props: Props): JSX.Element {
                 });
             } else if (action.key === Actions.DELETE) {
                 Modal.confirm({
-                    title: `The job ${job.id} will be deleted`,
-                    content: 'All related data (annotations) will be lost. Continue?',
+                    title: `作业 ${job.id} 将被删除`,
+                    content: '所有相关数据 (annotations) 都会丢失.继续?',
                     className: 'cvat-modal-confirm-delete-job',
                     onOk: () => {
                         dispatch(deleteJobAsync(job));
@@ -80,7 +80,7 @@ function JobActionsMenu(props: Props): JSX.Element {
                         type: 'primary',
                         danger: true,
                     },
-                    okText: 'Delete',
+                    okText: '删除',
                 });
             }
         },
@@ -95,19 +95,19 @@ function JobActionsMenu(props: Props): JSX.Element {
             className='cvat-job-item-menu'
             onClick={onClickMenu}
         >
-            <Menu.Item key={Actions.TASK} disabled={job.taskId === null}>Go to the task</Menu.Item>
-            <Menu.Item key={Actions.PROJECT} disabled={job.projectId === null}>Go to the project</Menu.Item>
-            <Menu.Item key={Actions.BUG_TRACKER} disabled={!job.bugTracker}>Go to the bug tracker</Menu.Item>
-            <Menu.Item key={Actions.IMPORT_JOB}>Import annotations</Menu.Item>
-            <Menu.Item key={Actions.EXPORT_JOB}>Export annotations</Menu.Item>
-            <Menu.Item key={Actions.VIEW_ANALYTICS}>View analytics</Menu.Item>
+            <Menu.Item key={Actions.TASK} disabled={job.taskId === null}>前往任务</Menu.Item>
+            <Menu.Item key={Actions.PROJECT} disabled={job.projectId === null}>前往项目</Menu.Item>
+            <Menu.Item key={Actions.BUG_TRACKER} disabled={!job.bugTracker}>前往问题追踪</Menu.Item>
+            <Menu.Item key={Actions.IMPORT_JOB}>导入标注</Menu.Item>
+            <Menu.Item key={Actions.EXPORT_JOB}>导出标注</Menu.Item>
+            <Menu.Item key={Actions.VIEW_ANALYTICS}>查看分析</Menu.Item>
             {consensusJobsPresent && job.parentJobId === null && (
                 <Menu.Item
                     key={Actions.MERGE_SPECIFIC_CONSENSUS_JOBS}
                     disabled={isInMergingConsensus}
                     icon={isInMergingConsensus && <LoadingOutlined />}
                 >
-                    Merge consensus job
+                    合并共同作业
                 </Menu.Item>
             )}
             <Menu.Divider />
@@ -115,7 +115,7 @@ function JobActionsMenu(props: Props): JSX.Element {
                 key={Actions.DELETE}
                 disabled={job.type !== JobType.GROUND_TRUTH}
             >
-                Delete
+                删除
             </Menu.Item>
         </Menu>
     );

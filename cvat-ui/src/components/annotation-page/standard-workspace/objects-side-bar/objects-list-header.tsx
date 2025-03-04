@@ -47,7 +47,7 @@ function LockAllSwitcher(props: Props): JSX.Element {
     } = props;
     return (
         <Col span={3}>
-            <CVATTooltip title={`Switch lock property for all ${switchLockAllShortcut}`}>
+            <CVATTooltip title={`锁定所有属性开关 ${switchLockAllShortcut}`}>
                 {statesLocked ? <LockFilled onClick={unlockAllStates} /> : <UnlockOutlined onClick={lockAllStates} />}
             </CVATTooltip>
         </Col>
@@ -60,7 +60,7 @@ function HideAllSwitcher(props: Props): JSX.Element {
     } = props;
     return (
         <Col span={3}>
-            <CVATTooltip title={`Switch hidden property for all ${switchHiddenAllShortcut}`}>
+            <CVATTooltip title={`隐藏所有属性开关 ${switchHiddenAllShortcut}`}>
                 {statesHidden ? (
                     <EyeInvisibleFilled onClick={showAllStates} />
                 ) : (
@@ -77,7 +77,7 @@ function GTSwitcher(props: Props): JSX.Element {
     } = props;
     return (
         <Col span={3}>
-            <CVATTooltip title='Show Ground truth annotations and conflicts'>
+            <CVATTooltip title='显示基准真相标注和冲突'>
                 <Icon
                     className={
                         `cvat-objects-sidebar-show-ground-truth ${showGroundTruth ? 'cvat-objects-sidebar-show-ground-truth-active' : ''}`
@@ -94,7 +94,7 @@ function CollapseAllSwitcher(props: Props): JSX.Element {
     const { statesCollapsed, expandAllStates, collapseAllStates } = props;
     return (
         <Col span={3}>
-            <CVATTooltip title='Expand/collapse all'>
+            <CVATTooltip title='展开/折叠 所有'>
                 {statesCollapsed ? (
                     <CaretDownOutlined onClick={expandAllStates} />
                 ) : (
@@ -114,7 +114,7 @@ function ObjectListHeader(props: Props): JSX.Element {
         <div className='cvat-objects-sidebar-states-header'>
             <Row justify='space-between' align='middle'>
                 <Col span={24}>
-                    <Text>{`Items: ${count}`}</Text>
+                    <Text>{`条目: ${count}`}</Text>
                     <StatesOrderingSelector
                         statesOrdering={statesOrdering}
                         changeStatesOrdering={changeStatesOrdering}

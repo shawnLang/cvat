@@ -812,7 +812,7 @@ class CreateTaskContent extends React.PureComponent<Props & RouteComponentProps,
         return (
             <>
                 <Col span={24}>
-                    <Text className='cvat-text-color'>Project</Text>
+                    <Text className='cvat-text-color'>项目</Text>
                 </Col>
                 <Col span={24}>
                     <ProjectSearchField onSelect={this.handleProjectIdChange} value={projectId} />
@@ -828,7 +828,7 @@ class CreateTaskContent extends React.PureComponent<Props & RouteComponentProps,
             return (
                 <>
                     <Col span={24}>
-                        <Text className='cvat-text-color'>Subset</Text>
+                        <Text className='cvat-text-color'>子集</Text>
                     </Col>
                     <Col span={24}>
                         <ProjectSubsetField
@@ -852,10 +852,10 @@ class CreateTaskContent extends React.PureComponent<Props & RouteComponentProps,
             return (
                 <>
                     <Col span={24}>
-                        <Text className='cvat-text-color'>Labels</Text>
+                        <Text className='cvat-text-color'>标签</Text>
                     </Col>
                     <Col span={24}>
-                        <Text type='secondary'>Project labels will be used</Text>
+                        <Text type='secondary'>项目标签也会被(继承)使用</Text>
                     </Col>
                 </>
             );
@@ -864,7 +864,7 @@ class CreateTaskContent extends React.PureComponent<Props & RouteComponentProps,
         return (
             <Col span={24}>
                 <Text type='danger'>* </Text>
-                <Text className='cvat-text-color'>Labels</Text>
+                <Text className='cvat-text-color'>标签</Text>
                 <LabelsEditor
                     labels={labels}
                     onSubmit={(newLabels): void => {
@@ -885,7 +885,7 @@ class CreateTaskContent extends React.PureComponent<Props & RouteComponentProps,
             <>
                 <Col span={24}>
                     <Text type='danger'>* </Text>
-                    <Text className='cvat-text-color'>Select files</Text>
+                    <Text className='cvat-text-color'>选择文件</Text>
                     <FileManagerComponent
                         many={many}
                         onChangeActiveKey={this.changeFileManagerTab}
@@ -933,7 +933,7 @@ class CreateTaskContent extends React.PureComponent<Props & RouteComponentProps,
                     className='cvat-advanced-configuration-wrapper'
                     items={[{
                         key: '1',
-                        label: <Text className='cvat-title'>Advanced configuration</Text>,
+                        label: <Text className='cvat-title'>高级配置</Text>,
                         children: (
                             <AdvancedConfigurationForm
                                 activeFileManagerTab={activeFileManagerTab}
@@ -1003,7 +1003,7 @@ class CreateTaskContent extends React.PureComponent<Props & RouteComponentProps,
                         onClick={this.handleSubmitAndOpen}
                         disabled={!!uploadFileErrorMessage}
                     >
-                        Submit & Open
+                        提交并打开
                     </Button>
                 </Col>
                 <Col>
@@ -1013,7 +1013,7 @@ class CreateTaskContent extends React.PureComponent<Props & RouteComponentProps,
                         onClick={this.handleSubmitAndContinue}
                         disabled={!!uploadFileErrorMessage}
                     >
-                        Submit & Continue
+                        提交并继续
                     </Button>
                 </Col>
             </Row>
@@ -1054,9 +1054,9 @@ class CreateTaskContent extends React.PureComponent<Props & RouteComponentProps,
                         onClick={this.handleSubmitMultiTasks}
                         disabled={!!uploadFileErrorMessage}
                     >
-                        Submit&nbsp;
+                        提交&nbsp;
                         {currentFiles.length}
-                        &nbsp;tasks
+                        &nbsp;任务
                     </Button>
                 </Col>
             </Row>
@@ -1069,7 +1069,7 @@ class CreateTaskContent extends React.PureComponent<Props & RouteComponentProps,
         return (
             <Row justify='start' align='middle' className='cvat-create-task-content'>
                 <Col span={24}>
-                    <Text className='cvat-title'>Basic configuration</Text>
+                    <Text className='cvat-title'>基本配置</Text>
                 </Col>
 
                 {this.renderBasicBlock()}

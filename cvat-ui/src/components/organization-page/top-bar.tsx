@@ -152,7 +152,7 @@ function OrganizationTopBar(props: Props): JSX.Element {
                                     )}
                                 >
                                     <Button size='middle' className='cvat-organization-page-actions-button'>
-                                        <Text className='cvat-text-color'>Actions</Text>
+                                        <Text className='cvat-text-color'>操作</Text>
                                         <MoreOutlined className='cvat-menu-icon' />
                                     </Button>
                                 </Popover>
@@ -271,7 +271,7 @@ function OrganizationTopBar(props: Props): JSX.Element {
                                 {contact.location}
                             </Text>
                         </div>
-                        <Text type='secondary'>{`Created ${moment(createdDate).format('MMMM Do YYYY')}`}</Text>
+                        <Text type='secondary'>{`Created ${moment(createdDate).format('YYYY-MM-DD')}`}</Text>
                         <Text type='secondary'>{`Updated ${moment(updatedDate).fromNow()}`}</Text>
                     </div>
                 </Col>

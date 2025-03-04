@@ -128,7 +128,7 @@ class TaskItemComponent extends React.PureComponent<TaskItemProps & RouteCompone
         const { id } = taskInstance;
         const owner = taskInstance.owner ? taskInstance.owner.username : null;
         const updated = moment(taskInstance.updatedDate).fromNow();
-        const created = moment(taskInstance.createdDate).format('MMMM Do YYYY');
+        const created = moment(taskInstance.createdDate).format('YYYY-MM-DD');
 
         return (
             <Col span={10} className='cvat-task-item-description'>
@@ -141,11 +141,11 @@ class TaskItemComponent extends React.PureComponent<TaskItemProps & RouteCompone
                 <br />
                 {owner && (
                     <>
-                        <Text type='secondary'>{`Created ${owner ? `by ${owner}` : ''} on ${created}`}</Text>
+                        <Text type='secondary'>{`${owner ? `由 ${owner} 创建` : '创建'} 在 ${created}`}</Text>
                         <br />
                     </>
                 )}
-                <Text type='secondary'>{`Last updated ${updated}`}</Text>
+                <Text type='secondary'>{`最近更新 ${updated}`}</Text>
             </Col>
         );
     }
@@ -192,23 +192,23 @@ class TaskItemComponent extends React.PureComponent<TaskItemProps & RouteCompone
                         <div>
                             { numOfCompleted > 0 && (
                                 <Text strong className='cvat-task-completed-progress'>
-                                    {`\u2022 ${numOfCompleted} done `}
+                                    {`\u2022 ${numOfCompleted} 完成 `}
                                 </Text>
                             )}
 
                             { numOfValidation > 0 && (
                                 <Text strong className='cvat-task-validation-progress'>
-                                    {`\u2022 ${numOfValidation} on review `}
+                                    {`\u2022 ${numOfValidation} 审核中 `}
                                 </Text>
                             )}
 
                             { numOfAnnotation > 0 && (
                                 <Text strong className='cvat-task-annotation-progress'>
-                                    {`\u2022 ${numOfAnnotation} annotating `}
+                                    {`\u2022 ${numOfAnnotation} 标注 `}
                                 </Text>
                             )}
                             <Text strong type='secondary'>
-                                {`\u2022 ${numOfJobs} total`}
+                                {`\u2022 ${numOfJobs} 全部`}
                             </Text>
                         </div>
                         <Progress
@@ -262,7 +262,7 @@ class TaskItemComponent extends React.PureComponent<TaskItemProps & RouteCompone
                                 history.push(`/tasks/${id}`);
                             }}
                         >
-                            Open
+                            打开
                         </Button>
                     </Col>
                 </Row>
@@ -280,7 +280,7 @@ class TaskItemComponent extends React.PureComponent<TaskItemProps & RouteCompone
                         )}
                     >
                         <Col className='cvat-item-open-task-actions'>
-                            <Text className='cvat-text-color'>Actions</Text>
+                            <Text className='cvat-text-color'>操作</Text>
                             <MoreOutlined className='cvat-menu-icon' />
                         </Col>
                     </Dropdown>

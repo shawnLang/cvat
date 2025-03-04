@@ -30,11 +30,11 @@ function GroupControl(props: Props): JSX.Element {
 
     const title = [];
     if (canvasInstance instanceof Canvas) {
-        title.push(`Group shapes ${normalizedKeyMap.SWITCH_GROUP_MODE_STANDARD_CONTROLS}`);
-        title.push(`Select and press ${normalizedKeyMap.RESET_GROUP_STANDARD_CONTROLS} to reset a group.`);
+        title.push(`组合图形 ${normalizedKeyMap.SWITCH_GROUP_MODE_STANDARD_CONTROLS}`);
+        title.push(`选中并按下 ${normalizedKeyMap.RESET_GROUP_STANDARD_CONTROLS} 来重置组.`);
     } else if (canvasInstance instanceof Canvas3d) {
-        title.push(`Group shapes/tracks ${normalizedKeyMap.SWITCH_GROUP_MODE_STANDARD_3D_CONTROLS}`);
-        title.push(`Select and press ${normalizedKeyMap.RESET_GROUP_STANDARD_3D_CONTROLS} to reset a group.`);
+        title.push(`组合图形/tracks ${normalizedKeyMap.SWITCH_GROUP_MODE_STANDARD_3D_CONTROLS}`);
+        title.push(`选中并按下 ${normalizedKeyMap.RESET_GROUP_STANDARD_3D_CONTROLS} 来重置组.`);
     }
 
     return disabled ? (

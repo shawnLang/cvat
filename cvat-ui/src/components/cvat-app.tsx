@@ -203,7 +203,7 @@ class CVATApplication extends React.PureComponent<CVATAppProps & RouteComponentP
                 });
 
                 Modal.error({
-                    title: 'Cannot connect to the server',
+                    title: '无法连接到服务器',
                     className: 'cvat-modal-cannot-connect-server',
                     closable: false,
                     content:
@@ -220,22 +220,22 @@ class CVATApplication extends React.PureComponent<CVATAppProps & RouteComponentP
         if (showPlatformNotification()) {
             stopNotifications(false);
             Modal.warning({
-                title: 'Unsupported platform detected',
+                title: '未支持平台',
                 className: 'cvat-modal-unsupported-platform-warning',
                 content: (
                     <>
                         <Row>
                             <Col>
                                 <Text>
-                                    {`The browser you are using is ${name} ${version} based on ${engine}.` +
-                                        ' CVAT was tested in the latest versions of Chrome and Firefox.' +
-                                        ' We recommend to use Chrome (or another Chromium based browser)'}
+                                    {`您使用的基于 {{engine}} 核心浏览器 {{name}} v{{version}}.` +
+                                        ' CVAT 适配最新版 Chrome 和 Firefox.' +
+                                        ' 请使用 Chrome (等基于 Chromium 的浏览器)'}
                                 </Text>
                             </Col>
                         </Row>
                         <Row>
                             <Col>
-                                <Text type='secondary'>{`The operating system is ${os}`}</Text>
+                                <Text type='secondary'>{`操作系统 ${os}`}</Text>
                             </Col>
                         </Row>
                     </>
@@ -245,12 +245,12 @@ class CVATApplication extends React.PureComponent<CVATAppProps & RouteComponentP
         } else if (showUnsupportedNotification()) {
             stopNotifications(false);
             Modal.warning({
-                title: 'Unsupported features detected',
+                title: '发现未支持特性',
                 className: 'cvat-modal-unsupported-features-warning',
                 content: (
                     <Text>
-                        {`${name} v${version} does not support API, which is used by CVAT. `}
-                        It is strongly recommended to update your browser.
+                        {`{{name}} v{{version}} 未支持 CVAT 需要的 API. `}
+                        强烈建议你升级浏览器.
                     </Text>
                 ),
                 onOk: () => stopNotifications(true),
@@ -411,7 +411,7 @@ class CVATApplication extends React.PureComponent<CVATAppProps & RouteComponentP
                 ),
                 duration: null,
                 description: errorLength > appConfig.MAXIMUM_NOTIFICATION_MESSAGE_LENGTH ?
-                    'Open the Browser Console to get details' : <CVATMarkdown history={history}>{error}</CVATMarkdown>,
+                    '打开浏览器控制台以获取详细信息' : <CVATMarkdown history={history}>{error}</CVATMarkdown>,
             });
 
             if (shouldLog) {

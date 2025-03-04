@@ -20,9 +20,9 @@ export default function EmailVerificationSentPage(): JSX.Element {
             <Content>
                 <Row justify='center' align='middle' id='email-verification-sent-page-container'>
                     <Col>
-                        <h1>Please, confirm your email</h1>
+                        <h1>请在你的邮箱中确认</h1>
                         <Button className='cvat-go-to-login-button' type='link' href='/auth/login'>
-                            Go to login page
+                            去登录页
                         </Button>
                     </Col>
                 </Row>

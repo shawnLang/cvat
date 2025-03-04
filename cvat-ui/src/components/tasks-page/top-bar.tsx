@@ -61,7 +61,7 @@ export default function TopBarComponent(props: VisibleTopBarProps): JSX.Element 
                         }}
                         defaultValue={query.search || ''}
                         className='cvat-tasks-page-search-bar'
-                        placeholder='Search ...'
+                        placeholder='搜索 ...'
                     />
                     <div>
                         <SortingComponent
@@ -104,7 +104,7 @@ export default function TopBarComponent(props: VisibleTopBarProps): JSX.Element 
                                     onClick={(): void => history.push('/tasks/create')}
                                     icon={<PlusOutlined />}
                                 >
-                                    Create a new task
+                                    新建任务
                                 </Button>
                                 <Button
                                     className='cvat-create-multi-tasks-button'
@@ -112,7 +112,7 @@ export default function TopBarComponent(props: VisibleTopBarProps): JSX.Element 
                                     onClick={(): void => history.push('/tasks/create?many=true')}
                                     icon={<span className='anticon'><MultiPlusIcon /></span>}
                                 >
-                                    Create multi tasks
+                                    新建多任务
                                 </Button>
                                 <Button
                                     className='cvat-import-task-button'
@@ -121,7 +121,7 @@ export default function TopBarComponent(props: VisibleTopBarProps): JSX.Element 
                                     icon={importing ? <LoadingOutlined /> : <UploadOutlined />}
                                     onClick={() => dispatch(importActions.openImportBackupModal('task'))}
                                 >
-                                    Create from backup
+                                    由备份新建
                                 </Button>
                             </CvatDropdownMenuPaper>
                         )}

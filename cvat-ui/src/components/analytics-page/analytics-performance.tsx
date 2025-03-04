@@ -65,14 +65,14 @@ function AnalyticsOverview(props: Props): JSX.Element | null {
                         <Card>
                             <div className='cvat-empty-performance-analytics-item'>
                                 {reportRefreshingStatus ? <Text>{reportRefreshingStatus}</Text> :
-                                    <Text>{`A performance report for the ${report.target} was not computed`}</Text>}
+                                    <Text>{`没有计算 ${report.target} 的性能报告`}</Text>}
                                 <Button
                                     onClick={onCreateReport}
                                     loading={reportRefreshingStatus !== null}
                                     disabled={reportRefreshingStatus !== null}
                                     type='primary'
                                 >
-                                    Request
+                                    请求
                                 </Button>
                             </div>
                         </Card>
@@ -172,7 +172,7 @@ function AnalyticsOverview(props: Props): JSX.Element | null {
             }
             default: {
                 Notification.warning({
-                    message: `Cannot display analytics view with view type ${entry.defaultView}`,
+                    message: `无法显示视图类型的分析视图 ${entry.defaultView}`,
                 });
             }
         }

@@ -94,11 +94,11 @@ function WorkspaceSettingsComponent(props: Props): JSX.Element {
                             onSwitchAutoSave(event.target.checked);
                         }}
                     >
-                        Enable auto save
+                        开启自动保存
                     </Checkbox>
                 </Col>
                 <Col className='cvat-workspace-settings-auto-save-interval'>
-                    <Text type='secondary'> Auto save every </Text>
+                    <Text type='secondary'> 自动保存间隔 </Text>
                     <InputNumber
                         size='small'
                         min={minAutoSaveInterval}
@@ -113,7 +113,7 @@ function WorkspaceSettingsComponent(props: Props): JSX.Element {
                             }
                         }}
                     />
-                    <Text type='secondary'> minutes </Text>
+                    <Text type='secondary'> 分钟 </Text>
                 </Col>
             </Row>
             <Row className='cvat-player-setting'>
@@ -126,11 +126,11 @@ function WorkspaceSettingsComponent(props: Props): JSX.Element {
                                 onSwitchShowingInterpolatedTracks(event.target.checked);
                             }}
                         >
-                            Show all interpolation tracks
+                            显示所有插入轨道
                         </Checkbox>
                     </Row>
                     <Row>
-                        <Text type='secondary'> Show hidden interpolated objects in the side panel</Text>
+                        <Text type='secondary'> 侧边栏显示隐藏的插入对象</Text>
                     </Row>
                 </Col>
             </Row>
@@ -143,18 +143,18 @@ function WorkspaceSettingsComponent(props: Props): JSX.Element {
                             onSwitchShowingObjectsTextAlways(event.target.checked);
                         }}
                     >
-                        Always show object details
+                        总是显示对象详情
                     </Checkbox>
                 </Col>
                 <Col span={24}>
                     <Text type='secondary'>
-                        Show text for an object on the canvas not only when the object is activated
+                        画布上显示对象描述不仅为活动对象
                     </Text>
                 </Col>
             </Row>
             <Row className='cvat-workspace-settings-text-settings cvat-player-setting'>
                 <Col span={24}>
-                    <Text>Content of a text</Text>
+                    <Text>文字内容</Text>
                 </Col>
                 <Col span={16}>
                     <Select
@@ -174,10 +174,10 @@ function WorkspaceSettingsComponent(props: Props): JSX.Element {
             </Row>
             <Row className='cvat-workspace-settings-text-settings cvat-player-setting'>
                 <Col span={12}>
-                    <Text>Position of a text</Text>
+                    <Text>文字位置</Text>
                 </Col>
                 <Col span={12}>
-                    <Text>Font size of a text</Text>
+                    <Text>文字字号</Text>
                 </Col>
                 <Col span={12}>
                     <Select
@@ -185,8 +185,8 @@ function WorkspaceSettingsComponent(props: Props): JSX.Element {
                         value={textPosition}
                         onChange={onChangeTextPosition}
                     >
-                        <Select.Option value='auto'>Auto</Select.Option>
-                        <Select.Option value='center'>Center</Select.Option>
+                        <Select.Option value='auto'>自动</Select.Option>
+                        <Select.Option value='center'>居中</Select.Option>
                     </Select>
                 </Col>
                 <Col span={12}>
@@ -208,12 +208,12 @@ function WorkspaceSettingsComponent(props: Props): JSX.Element {
                             onSwitchAutomaticBordering(event.target.checked);
                         }}
                     >
-                        Automatic bordering
+                        自动描边
                     </Checkbox>
                 </Col>
                 <Col span={24}>
                     <Text type='secondary'>
-                        Enable automatic bordering for polygons and polylines during drawing/editing
+                        新建/编辑 多边形和折线时，开启自动描边
                     </Text>
                 </Col>
             </Row>
@@ -226,11 +226,11 @@ function WorkspaceSettingsComponent(props: Props): JSX.Element {
                             onSwitchIntelligentPolygonCrop(event.target.checked);
                         }}
                     >
-                        Intelligent polygon cropping
+                        智能多边形切割
                     </Checkbox>
                 </Col>
                 <Col span={24}>
-                    <Text type='secondary'>Try to crop polygons automatically when editing</Text>
+                    <Text type='secondary'>编辑时尝试自动多边形切割</Text>
                 </Col>
             </Row>
             <Row className='cvat-workspace-settings-show-frame-tags cvat-player-setting'>
@@ -242,16 +242,16 @@ function WorkspaceSettingsComponent(props: Props): JSX.Element {
                             onSwitchShowingTagsOnFrame(event.target.checked);
                         }}
                     >
-                        Show tags on frame
+                        显示帧标签
                     </Checkbox>
                 </Col>
                 <Col span={24}>
-                    <Text type='secondary'>Show frame tags in the corner of the workspace</Text>
+                    <Text type='secondary'>工作区角落显示帧标签</Text>
                 </Col>
             </Row>
             <Row className='cvat-workspace-settings-aam-zoom-margin cvat-player-setting'>
                 <Col>
-                    <Text className='cvat-text-color'> Attribute annotation mode (AAM) zoom margin </Text>
+                    <Text className='cvat-text-color'> 属性标注模式(AAM)放大边距 </Text>
                     <InputNumber
                         min={minAAMMargin}
                         max={maxAAMMargin}
@@ -266,7 +266,7 @@ function WorkspaceSettingsComponent(props: Props): JSX.Element {
             </Row>
             <Row className='cvat-workspace-settings-control-points-size cvat-player-setting'>
                 <Col>
-                    <Text className='cvat-text-color'> Control points size </Text>
+                    <Text className='cvat-text-color'> 控制点大小 </Text>
                     <InputNumber
                         min={minControlPointsSize}
                         max={maxControlPointsSize}
@@ -283,7 +283,7 @@ function WorkspaceSettingsComponent(props: Props): JSX.Element {
             </Row>
             <Row className='cvat-workspace-settings-approx-poly-threshold cvat-player-setting'>
                 <Col>
-                    <Text className='cvat-text-color'>Default number of points in polygon approximation</Text>
+                    <Text className='cvat-text-color'>多边形趋近 默认点数</Text>
                 </Col>
                 <Col span={7} offset={1}>
                     <Slider
@@ -297,7 +297,7 @@ function WorkspaceSettingsComponent(props: Props): JSX.Element {
                     />
                 </Col>
                 <Col>
-                    <Text type='secondary'>Works for serverless interactors and OpenCV scissors</Text>
+                    <Text type='secondary'>使用 serverless 处理 和 OpenCV scissors 时有效</Text>
                 </Col>
             </Row>
         </div>

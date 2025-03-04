@@ -44,7 +44,7 @@ export default function DetailsComponent(props: DetailsComponentProps): JSX.Elem
                         size='large'
                     >
                         <LeftOutlined />
-                        Back to project
+                        返回项目
                     </Button>
                 ) : (
                     <Button
@@ -54,7 +54,7 @@ export default function DetailsComponent(props: DetailsComponentProps): JSX.Elem
                         size='large'
                     >
                         <LeftOutlined />
-                        Back to tasks
+                        返回任务列表
                     </Button>
                 )}
             </Col>
@@ -72,7 +72,7 @@ export default function DetailsComponent(props: DetailsComponentProps): JSX.Elem
                     )}
                 >
                     <Button size='middle' className='cvat-task-page-actions-button'>
-                        <Text className='cvat-text-color'>Actions</Text>
+                        <Text className='cvat-text-color'>操作</Text>
                         <MoreOutlined className='cvat-menu-icon' />
                     </Button>
                 </Dropdown>

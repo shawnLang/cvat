@@ -127,7 +127,7 @@ export default function ManifestsManager(props: Props): JSX.Element {
             <Row justify='start'>
                 <Col>
                     <Button onClick={onAddManifestItem} className='cvat-add-manifest-button'>
-                        Add manifest
+                        添加清单
                         <PlusCircleOutlined />
                     </Button>
                 </Col>
@@ -138,7 +138,7 @@ export default function ManifestsManager(props: Props): JSX.Element {
                         <Alert
                             showIcon
                             type='info'
-                            message='We highly recommend attaching a manifest file to reduce the number of requests to the bucket'
+                            message='我们强烈建议附加清单文件，以减少对存储桶的请求数'
                         />
                     </Col>
                 </Row>

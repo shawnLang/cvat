@@ -61,7 +61,7 @@ function QualityTableHeader(props: TableHeaderProps): JSX.Element {
                                 enterButton
                                 onSearch={onSearch}
                                 className='cvat-quality-table-search-bar'
-                                placeholder='Search ...'
+                                placeholder='搜索 ...'
                             />
                         </Col>
                     </Row>

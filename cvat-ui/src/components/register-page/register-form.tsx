@@ -157,14 +157,14 @@ function RegisterFormComponent(props: Props): JSX.Element {
                             rules={[
                                 {
                                     required: true,
-                                    message: 'Please specify a first name',
+                                    message: '输入的名不合法',
                                     pattern: patterns.validateName.pattern,
                                 },
                             ]}
                         >
                             <CVATSigningInput
                                 id='firstName'
-                                placeholder='First name'
+                                placeholder='名'
                                 autoComplete='given-name'
                                 onReset={() => form.setFieldsValue({ firstName: '' })}
                             />
@@ -177,14 +177,14 @@ function RegisterFormComponent(props: Props): JSX.Element {
                             rules={[
                                 {
                                     required: true,
-                                    message: 'Please specify a last name',
+                                    message: '输入的姓不合法',
                                     pattern: patterns.validateName.pattern,
                                 },
                             ]}
                         >
                             <CVATSigningInput
                                 id='lastName'
-                                placeholder='Last name'
+                                placeholder='姓'
                                 autoComplete='family-name'
                                 onReset={() => form.setFieldsValue({ lastName: '' })}
                             />
@@ -197,18 +197,18 @@ function RegisterFormComponent(props: Props): JSX.Element {
                     rules={[
                         {
                             type: 'email',
-                            message: 'The input is not valid E-mail!',
+                            message: '输入的邮箱不合法',
                         },
                         {
                             required: true,
-                            message: 'Please specify an email address',
+                            message: '请提供邮箱地址',
                         },
                     ]}
                 >
                     <CVATSigningInput
                         id='email'
                         autoComplete='email'
-                        placeholder='Email'
+                        placeholder='邮箱'
                         disabled={!!predefinedEmail}
                         value={predefinedEmail}
                         onReset={() => form.setFieldsValue({ email: '', username: '' })}
@@ -227,7 +227,7 @@ function RegisterFormComponent(props: Props): JSX.Element {
                     rules={[
                         {
                             required: true,
-                            message: 'Please specify a username',
+                            message: '请提供用户名',
                         },
                         {
                             validator: validateUsername,
@@ -236,7 +236,7 @@ function RegisterFormComponent(props: Props): JSX.Element {
                 >
                     <CVATSigningInput
                         id='username'
-                        placeholder='Username'
+                        placeholder='用户名'
                         autoComplete='username'
                         onReset={() => form.setFieldsValue({ username: '' })}
                         onChange={() => setUsernameEdited(true)}
@@ -248,14 +248,14 @@ function RegisterFormComponent(props: Props): JSX.Element {
                     rules={[
                         {
                             required: true,
-                            message: 'Please input your password!',
+                            message: '请提供密码',
                         }, validatePassword,
                     ]}
                 >
                     <CVATSigningInput
                         type={CVATInputType.PASSWORD}
                         id='password1'
-                        placeholder='Password'
+                        placeholder='密码'
                         autoComplete='new-password'
                     />
                 </Form.Item>
@@ -269,7 +269,7 @@ function RegisterFormComponent(props: Props): JSX.Element {
                         rules={[
                             {
                                 required: true,
-                                message: 'You must accept to continue!',
+                                message: '您必须同意才能继续！',
                             }, validateAgreement(userAgreements),
                         ]}
                     >
@@ -292,7 +292,7 @@ function RegisterFormComponent(props: Props): JSX.Element {
                         loading={fetching}
                         disabled={fetching}
                     >
-                        Create account
+                        创建帐户
                     </Button>
                 </Form.Item>
             </Form>

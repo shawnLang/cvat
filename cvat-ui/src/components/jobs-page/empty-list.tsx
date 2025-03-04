@@ -20,23 +20,23 @@ function EmptyListComponent(props: Props): JSX.Element {
     return (
         <div className='cvat-empty-jobs-list'>
             <Empty description={notFound ?
-                (<Text strong>No results matched your search...</Text>) : (
+                (<Text strong>没有符合搜索条件的结果...</Text>) : (
                     <>
                         <Row justify='center' align='middle'>
                             <Col>
-                                <Text strong>No jobs created yet...</Text>
+                                <Text strong>还没有创建作业...</Text>
                             </Col>
                         </Row>
                         <Row justify='center' align='middle'>
                             <Col>
-                                <Text type='secondary'>To get started with your annotation project</Text>
+                                <Text type='secondary'>为了开始标注项目</Text>
                             </Col>
                         </Row>
                         <Row justify='center' align='middle'>
                             <Col>
-                                <Link to='/tasks/create'>create a new task</Link>
-                                <Text type='secondary'> or try to </Text>
-                                <Link to='/projects/create'>create a new project</Link>
+                                <Link to='/tasks/create'>新建一个任务</Link>
+                                <Text type='secondary'> 或尝试 </Text>
+                                <Link to='/projects/create'>新建一个项目</Link>
                             </Col>
                         </Row>
                     </>
