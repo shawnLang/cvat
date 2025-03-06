@@ -78,7 +78,7 @@ export default function QualitySettingsForm(props: Readonly<Props>): JSX.Element
 
     const generalTooltip = makeTooltip(
         <>
-            {makeTooltipFragment('Target metric', targetMetricDescription)}
+            {makeTooltipFragment('目标量度', targetMetricDescription)}
             {makeTooltipFragment('Target metric threshold', settings.descriptions.targetMetricThreshold)}
             {makeTooltipFragment('Compare attributes', settings.descriptions.compareAttributes)}
             {makeTooltipFragment('Empty frames are annotated', settings.descriptions.emptyIsAnnotated)}
@@ -137,13 +137,13 @@ export default function QualitySettingsForm(props: Readonly<Props>): JSX.Element
             <Row justify='end' className='cvat-quality-settings-save-btn'>
                 <Col>
                     <Button onClick={onSave} type='primary'>
-                        Save
+                        保存
                     </Button>
                 </Col>
             </Row>
             <Row className='cvat-quality-settings-title'>
                 <Text strong>
-                    General
+                    一般
                 </Text>
                 <CVATTooltip title={generalTooltip} className='cvat-analytics-tooltip' overlayStyle={{ maxWidth: '500px' }}>
                     <QuestionCircleOutlined
@@ -155,7 +155,7 @@ export default function QualitySettingsForm(props: Readonly<Props>): JSX.Element
                 <Col span={12}>
                     <Form.Item
                         name='targetMetric'
-                        label='Target metric'
+                        label='目标指标'
                         rules={[{ required: true }]}
                     >
                         <Select
@@ -163,13 +163,13 @@ export default function QualitySettingsForm(props: Readonly<Props>): JSX.Element
                             virtual={false}
                         >
                             <Select.Option value={TargetMetric.ACCURACY}>
-                                Accuracy
+                                准确性
                             </Select.Option>
                             <Select.Option value={TargetMetric.PRECISION}>
-                                Precision
+                                精度
                             </Select.Option>
                             <Select.Option value={TargetMetric.RECALL}>
-                                Recall
+                                召回
                             </Select.Option>
                         </Select>
                     </Form.Item>
@@ -177,7 +177,7 @@ export default function QualitySettingsForm(props: Readonly<Props>): JSX.Element
                 <Col span={12}>
                     <Form.Item
                         name='targetMetricThreshold'
-                        label='Target metric threshold'
+                        label='目标度量阈值'
                         rules={[{ required: true }]}
                     >
                         <InputNumber min={0} max={100} precision={0} />
@@ -192,7 +192,7 @@ export default function QualitySettingsForm(props: Readonly<Props>): JSX.Element
                         rules={[{ required: true }]}
                     >
                         <Checkbox>
-                            <Text className='cvat-text-color'>Compare attributes</Text>
+                            <Text className='cvat-text-color'>比较属性</Text>
                         </Checkbox>
                     </Form.Item>
                 </Col>
@@ -203,7 +203,7 @@ export default function QualitySettingsForm(props: Readonly<Props>): JSX.Element
                         rules={[{ required: true }]}
                     >
                         <Checkbox>
-                            <Text className='cvat-text-color'>Empty frames are annotated</Text>
+                            <Text className='cvat-text-color'>空帧被注释</Text>
                         </Checkbox>
                     </Form.Item>
                 </Col>
@@ -211,7 +211,7 @@ export default function QualitySettingsForm(props: Readonly<Props>): JSX.Element
             <Divider />
             <Row className='cvat-quality-settings-title'>
                 <Text strong>
-                    Job validation
+                    作业验证
                 </Text>
                 <CVATTooltip title={jobValidationTooltip} className='cvat-analytics-tooltip' overlayStyle={{ maxWidth: '500px' }}>
                     <QuestionCircleOutlined
@@ -223,7 +223,7 @@ export default function QualitySettingsForm(props: Readonly<Props>): JSX.Element
                 <Col span={12}>
                     <Form.Item
                         name='maxValidationsPerJob'
-                        label='Max validations per job'
+                        label='每个作业的最大验证数'
                         rules={[{ required: true }]}
                     >
                         <InputNumber
@@ -237,7 +237,7 @@ export default function QualitySettingsForm(props: Readonly<Props>): JSX.Element
             <Divider />
             <Row className='cvat-quality-settings-title'>
                 <Text strong>
-                    Shape comparison
+                    形状比较
                 </Text>
                 <CVATTooltip title={shapeComparisonTooltip} className='cvat-analytics-tooltip' overlayStyle={{ maxWidth: '500px' }}>
                     <QuestionCircleOutlined
@@ -249,7 +249,7 @@ export default function QualitySettingsForm(props: Readonly<Props>): JSX.Element
                 <Col span={12}>
                     <Form.Item
                         name='iouThreshold'
-                        label='Min overlap threshold (%)'
+                        label='最小重叠阈值 (%)'
                         rules={[{ required: true }]}
                     >
                         <InputNumber min={0} max={100} precision={0} />
@@ -258,7 +258,7 @@ export default function QualitySettingsForm(props: Readonly<Props>): JSX.Element
                 <Col span={12}>
                     <Form.Item
                         name='lowOverlapThreshold'
-                        label='Low overlap threshold (%)'
+                        label='低重叠阈值 (%)'
                         rules={[{ required: true }]}
                     >
                         <InputNumber min={0} max={100} precision={0} />
@@ -268,7 +268,7 @@ export default function QualitySettingsForm(props: Readonly<Props>): JSX.Element
             <Divider />
             <Row className='cvat-quality-settings-title'>
                 <Text strong>
-                    Keypoint Comparison
+                    关键点比较
                 </Text>
                 <CVATTooltip title={keypointTooltip} className='cvat-analytics-tooltip' overlayStyle={{ maxWidth: '500px' }}>
                     <QuestionCircleOutlined
@@ -290,7 +290,7 @@ export default function QualitySettingsForm(props: Readonly<Props>): JSX.Element
             <Divider />
             <Row className='cvat-quality-settings-title'>
                 <Text strong>
-                    Point Comparison
+                    点比较
                 </Text>
                 <CVATTooltip title={pointTooltip} className='cvat-analytics-tooltip' overlayStyle={{ maxWidth: '500px' }}>
                     <QuestionCircleOutlined
@@ -302,7 +302,7 @@ export default function QualitySettingsForm(props: Readonly<Props>): JSX.Element
                 <Col span={12}>
                     <Form.Item
                         name='pointSizeBase'
-                        label='Point size base'
+                        label='点大小基数'
                         rules={[{ required: true }]}
                     >
                         <Select
@@ -310,10 +310,10 @@ export default function QualitySettingsForm(props: Readonly<Props>): JSX.Element
                             virtual={false}
                         >
                             <Select.Option value={PointSizeBase.IMAGE_SIZE}>
-                                Image size
+                                图像大小
                             </Select.Option>
                             <Select.Option value={PointSizeBase.GROUP_BBOX_SIZE}>
-                                Group bbox size
+                                Group bbox 大小
                             </Select.Option>
                         </Select>
                     </Form.Item>
@@ -322,7 +322,7 @@ export default function QualitySettingsForm(props: Readonly<Props>): JSX.Element
             <Divider />
             <Row className='cvat-quality-settings-title'>
                 <Text strong>
-                    Line Comparison
+                    线比较
                 </Text>
                 <CVATTooltip title={linesTooltip} className='cvat-analytics-tooltip' overlayStyle={{ maxWidth: '500px' }}>
                     <QuestionCircleOutlined
@@ -334,7 +334,7 @@ export default function QualitySettingsForm(props: Readonly<Props>): JSX.Element
                 <Col span={12}>
                     <Form.Item
                         name='lineThickness'
-                        label='Relative thickness (frame side %)'
+                        label='相对厚度 (frame side %)'
                         rules={[{ required: true }]}
                     >
                         <InputNumber min={0} max={1000} precision={0} />
@@ -349,14 +349,14 @@ export default function QualitySettingsForm(props: Readonly<Props>): JSX.Element
                         valuePropName='checked'
                     >
                         <Checkbox>
-                            <Text className='cvat-text-color'>Check orientation</Text>
+                            <Text className='cvat-text-color'>检查方向</Text>
                         </Checkbox>
                     </Form.Item>
                 </Col>
                 <Col span={12}>
                     <Form.Item
                         name='lineOrientationThreshold'
-                        label='Min similarity gain (%)'
+                        label='最小相似度增益 (%)'
                         rules={[{ required: true }]}
                     >
                         <InputNumber min={0} max={100} precision={0} />
@@ -366,7 +366,7 @@ export default function QualitySettingsForm(props: Readonly<Props>): JSX.Element
             <Divider />
             <Row className='cvat-quality-settings-title'>
                 <Text strong>
-                    Group Comparison
+                    组比较
                 </Text>
                 <CVATTooltip title={groupTooltip} className='cvat-analytics-tooltip' overlayStyle={{ maxWidth: '500px' }}>
                     <QuestionCircleOutlined
@@ -382,14 +382,14 @@ export default function QualitySettingsForm(props: Readonly<Props>): JSX.Element
                         rules={[{ required: true }]}
                     >
                         <Checkbox>
-                            <Text className='cvat-text-color'>Compare groups</Text>
+                            <Text className='cvat-text-color'>比较组</Text>
                         </Checkbox>
                     </Form.Item>
                 </Col>
                 <Col span={12}>
                     <Form.Item
                         name='groupMatchThreshold'
-                        label='Min group match threshold (%)'
+                        label='最小组匹配阈值 (%)'
                         rules={[{ required: true }]}
                     >
                         <InputNumber min={0} max={100} precision={0} />
@@ -399,7 +399,7 @@ export default function QualitySettingsForm(props: Readonly<Props>): JSX.Element
             <Divider />
             <Row className='cvat-quality-settings-title'>
                 <Text strong>
-                    Segmentation Comparison
+                    细分比较
                 </Text>
                 <CVATTooltip title={segmentationTooltip} className='cvat-analytics-tooltip' overlayStyle={{ maxWidth: '500px' }}>
                     <QuestionCircleOutlined
@@ -415,14 +415,14 @@ export default function QualitySettingsForm(props: Readonly<Props>): JSX.Element
                         rules={[{ required: true }]}
                     >
                         <Checkbox>
-                            <Text className='cvat-text-color'>Check object visibility</Text>
+                            <Text className='cvat-text-color'>检查对象可见性</Text>
                         </Checkbox>
                     </Form.Item>
                 </Col>
                 <Col span={12}>
                     <Form.Item
                         name='objectVisibilityThreshold'
-                        label='Min visibility threshold (area %)'
+                        label='最小可见性阈值 (面积 %)'
                         rules={[{ required: true }]}
                     >
                         <InputNumber min={0} max={100} precision={0} />
@@ -437,7 +437,7 @@ export default function QualitySettingsForm(props: Readonly<Props>): JSX.Element
                         rules={[{ required: true }]}
                     >
                         <Checkbox>
-                            <Text className='cvat-text-color'>Match only visible parts</Text>
+                            <Text className='cvat-text-color'>仅匹配可见部分</Text>
                         </Checkbox>
                     </Form.Item>
                 </Col>

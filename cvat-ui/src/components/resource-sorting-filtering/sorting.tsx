@@ -73,6 +73,39 @@ const SortableItem = SortableElement(
     },
 );
 
+const sortValueMap: { [key: string]: string } = {
+    'ID': 'ID',
+    'Owner': '主人',
+    'Status': '状态',
+    'Assignee': '负责人',
+    'Updated date': '更新日期',
+    'Subset': '子集',
+    'Mode': '模式',
+    'Dimension': '维度',
+    'Project ID': '项目ID',
+    'Name': '名称',
+    'Project name': '项目名称',
+    'Provider type': '提供者类型',
+    'Display name': '显示名称',
+    'Resource': '资源',
+    'Credentials type': '凭证类型',
+    'Description': '描述',
+    'Stage': '阶段',
+    'State': '状态',
+    'Task ID': '任务ID',
+    'Task name': '任务名称',
+    'Target URL': '目标URL',
+    'Type': '类型'
+};
+
+const convertSortValue = (value: string): string => {
+    if (value in sortValueMap) {
+        return sortValueMap[value];
+    }
+    return value;
+};
+
+
 const SortableList = SortableContainer(
     ({ items, appliedSorting, setAppliedSorting } :
     {
@@ -87,7 +120,7 @@ const SortableList = SortableContainer(
                     appliedSorting={appliedSorting}
                     setAppliedSorting={setAppliedSorting}
                     index={index}
-                    value={value}
+                    value={convertSortValue(value)}
                     valueIndex={index}
                     anchorIndex={items.indexOf(ANCHOR_KEYWORD)}
                 />

@@ -127,7 +127,7 @@ class TaskItemComponent extends React.PureComponent<TaskItemProps & RouteCompone
         const { taskInstance } = this.props;
         const { id } = taskInstance;
         const owner = taskInstance.owner ? taskInstance.owner.username : null;
-        const updated = moment(taskInstance.updatedDate).fromNow();
+        const updated = moment(taskInstance.updatedDate).format('YYYY-MM-DD');
         const created = moment(taskInstance.createdDate).format('YYYY-MM-DD');
 
         return (

@@ -76,6 +76,7 @@ function ActionsMenuComponent(props: Props): JSX.Element {
                         danger: true,
                     },
                     okText: '删除',
+                    cancelText: '取消',
                 });
             } else if (params.key === Actions.MERGE_CONSENSUS_JOBS) {
                 Modal.confirm({

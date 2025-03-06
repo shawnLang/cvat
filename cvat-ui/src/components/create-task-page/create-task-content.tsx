@@ -109,8 +109,8 @@ const defaultState: State = {
 };
 
 const UploadFileErrorMessages = {
-    one: 'Wrong list of files. You can upload an archive with images, a video, a pdf file or multiple images. ',
-    multi: 'Wrong list of files. You can upload one or more videos. ',
+    one: '文件列表错误。您可以上传包含图像、视频、pdf 文件或多个图像的存档 ',
+    multi: '文件列表错误。您可以上传一个或多个视频. ',
 };
 
 function receiveExtensions(files: RemoteFile[]): string[] {
@@ -126,7 +126,7 @@ function checkFiles(files: RemoteFile[], type: SupportedShareTypes, baseError: s
     if (erroredFiles.length !== 0) {
         const unsupportedTypes = receiveExtensions(erroredFiles);
         const extensionList = Array.from(new Set(unsupportedTypes));
-        return extensionList.length ? `${baseError} Found unsupported types: ${extensionList.join(', ')}. ` : baseError;
+        return extensionList.length ? `${baseError} 找到不支持的类型: ${extensionList.join(', ')}. ` : baseError;
     }
     return '';
 }
@@ -389,7 +389,7 @@ class CreateTaskContent extends React.PureComponent<Props & RouteComponentProps,
                 }
             }
         } catch (err) {
-            uploadFileErrorMessage = `We can't process it. ${err}`;
+            uploadFileErrorMessage = `我们无法处理它. ${err}`;
         }
 
         this.setState({
@@ -444,8 +444,8 @@ class CreateTaskContent extends React.PureComponent<Props & RouteComponentProps,
         const { projectId } = this.state;
         if (!this.validateLabelsOrProject()) {
             notification.error({
-                message: 'Could not create a task',
-                description: 'A task must contain at least one label or belong to some project',
+                message: '无法创建任务',
+                description: '任务必须至少包含一个标签或属于某个项目',
                 className: 'cvat-notification-create-task-fail',
             });
             reject();
@@ -454,8 +454,8 @@ class CreateTaskContent extends React.PureComponent<Props & RouteComponentProps,
 
         if (!this.validateFiles()) {
             notification.error({
-                message: 'Could not create a task',
-                description: 'A task must contain at least one file',
+                message: '无法创建任务',
+                description: '任务必须至少包含一个文件',
                 className: 'cvat-notification-create-task-fail',
             });
             reject();
@@ -495,7 +495,7 @@ class CreateTaskContent extends React.PureComponent<Props & RouteComponentProps,
                             }, () => {
                                 _resolve();
                                 notification.info({
-                                    message: 'Task parameters were automatically updated',
+                                    message: '任务参数已自动更新',
                                     description: 'Sorting method has been updated as Honeypots' +
                                         ' quality method only supports RANDOM sorting',
                                 });
@@ -522,7 +522,7 @@ class CreateTaskContent extends React.PureComponent<Props & RouteComponentProps,
                             ) : advanced.targetStorage,
                         });
                     }).catch((error: Error): void => {
-                        throw new Error(`Couldn't fetch the project ${projectId} ${error.toString()}`);
+                        throw new Error(`无法获取项目 ${projectId} ${error.toString()}`);
                     });
                 }
 
@@ -530,7 +530,7 @@ class CreateTaskContent extends React.PureComponent<Props & RouteComponentProps,
             }).then(resolve)
             .catch((error: Error | ValidateErrorEntity): void => {
                 notification.error({
-                    message: 'Could not create a task',
+                    message: '无法创建任务',
                     description: (error as ValidateErrorEntity).errorFields ?
                         (error as ValidateErrorEntity).errorFields
                             .map((field) => `${field.name} : ${field.errors.join(';')}`)
@@ -559,7 +559,7 @@ class CreateTaskContent extends React.PureComponent<Props & RouteComponentProps,
             .then(this.createOneTask)
             .then(() => {
                 notification.info({
-                    message: 'The task has been created',
+                    message: '任务已创建',
                     className: 'cvat-notification-create-task-success',
                 });
             })
@@ -679,11 +679,11 @@ class CreateTaskContent extends React.PureComponent<Props & RouteComponentProps,
                 const countAll = multiTasks.length;
 
                 notification.info({
-                    message: 'The tasks have been created',
+                    message: '任务已创建',
                     description:
-                        `Completed: ${countCompleted}, failed: ${countFailed},${countCancelled ?
-                            ` cancelled: ${countCancelled},` :
-                            ''} total: ${countAll}, `,
+                        `完成的: ${countCompleted}, 失败的: ${countFailed},${countCancelled ?
+                            ` 取消的: ${countCancelled},` :
+                            ''} 总: ${countAll}, `,
                     className: 'cvat-notification-create-task-success',
                 });
             });
@@ -706,7 +706,7 @@ class CreateTaskContent extends React.PureComponent<Props & RouteComponentProps,
             multiTasks: newMultiTasks,
         }, () => {
             notification.info({
-                message: `Creation of ${count} tasks have been canceled`,
+                message: `已取消创建 ${count} 个任务`,
                 className: 'cvat-notification-create-task-success',
             });
         });
@@ -970,7 +970,7 @@ class CreateTaskContent extends React.PureComponent<Props & RouteComponentProps,
                     className='cvat-quality-configuration-wrapper'
                     items={[{
                         key: '1',
-                        label: <Text className='cvat-title'>Quality</Text>,
+                        label: <Text className='cvat-title'>质量</Text>,
                         children: (
                             <QualityConfigurationForm
                                 ref={this.qualityConfigurationComponent}

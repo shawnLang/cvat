@@ -39,6 +39,7 @@ function ProjectActionsMenuComponent(props: Props): JSX.Element {
                 danger: true,
             },
             okText: '删除',
+            cancelText: '取消',
         });
     }, []);
 

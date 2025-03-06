@@ -67,12 +67,12 @@ export default function ConsensusSettingsForm(props: Readonly<Props>): JSX.Eleme
             <Row justify='end' className='cvat-consensus-settings-save-btn'>
                 <Col>
                     <Button onClick={onSave} type='primary'>
-                        Save
+                        保存
                     </Button>
                 </Col>
             </Row>
             <Row className='cvat-consensus-settings-title'>
-                <Text strong>General</Text>
+                <Text strong>常规</Text>
                 <CVATTooltip
                     title={generalTooltip}
                     className='cvat-analytics-tooltip'
@@ -85,7 +85,7 @@ export default function ConsensusSettingsForm(props: Readonly<Props>): JSX.Eleme
                 <Col span={6}>
                     <Form.Item
                         name='quorum'
-                        label='Quorum (%)'
+                        label='人数 (%)'
                         rules={[{ required: true }]}
                     >
                         <InputNumber min={0} max={100} precision={0} />
@@ -94,7 +94,7 @@ export default function ConsensusSettingsForm(props: Readonly<Props>): JSX.Eleme
             </Row>
             <Divider />
             <Row className='cvat-consensus-settings-title'>
-                <Text strong>Shape comparison</Text>
+                <Text strong>形状比较</Text>
                 <CVATTooltip
                     title={shapeComparisonTooltip}
                     className='cvat-analytics-tooltip'
@@ -107,7 +107,7 @@ export default function ConsensusSettingsForm(props: Readonly<Props>): JSX.Eleme
                 <Col span={6}>
                     <Form.Item
                         name='iouThreshold'
-                        label='Min Overlap (%)'
+                        label='最小重叠 (%)'
                         rules={[{ required: true }]}
                     >
                         <InputNumber min={0} max={100} precision={0} />

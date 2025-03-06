@@ -195,7 +195,7 @@ export default class QualityConfigurationForm extends React.PureComponent<Props>
                 ref={this.formRef}
             >
                 <Form.Item
-                    label='Validation mode'
+                    label='验证模式'
                     name='validationMode'
                     rules={[{ required: true }]}
                 >

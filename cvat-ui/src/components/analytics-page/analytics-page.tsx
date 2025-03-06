@@ -235,11 +235,11 @@ function AnalyticsPage(): JSX.Element {
             </Row>
         );
 
-        let analyticsFor: JSX.Element | null = <Link to={`/projects/${instance.id}`}>{`Project #${instance.id}`}</Link>;
+        let analyticsFor: JSX.Element | null = <Link to={`/projects/${instance.id}`}>{`项目 #${instance.id}`}</Link>;
         if (instanceType === 'task') {
-            analyticsFor = <Link to={`/tasks/${instance.id}`}>{`Task #${instance.id}`}</Link>;
+            analyticsFor = <Link to={`/tasks/${instance.id}`}>{`任务 #${instance.id}`}</Link>;
         } else if (instanceType === 'job') {
-            analyticsFor = <Link to={`/tasks/${instance.taskId}/jobs/${instance.id}`}>{`Job #${instance.id}`}</Link>;
+            analyticsFor = <Link to={`/tasks/${instance.taskId}/jobs/${instance.id}`}>{`作业 #${instance.id}`}</Link>;
         }
         title = (
             <Col>
@@ -260,7 +260,7 @@ function AnalyticsPage(): JSX.Element {
                 className='cvat-task-analytics-tabs'
                 items={[{
                     key: AnalyticsTabs.OVERVIEW,
-                    label: 'Performance',
+                    label: '性能',
                     children: (
                         <AnalyticsOverview
                             report={analyticsReport}

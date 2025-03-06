@@ -32,6 +32,19 @@ const initialValues: FormValues = {
     },
 };
 
+const instanceTypeToChinese = (instanceType: 'project' | 'task' | 'job' | null): string => {
+    switch (instanceType) {
+        case 'project':
+            return '项目';
+        case 'task':
+            return '任务';
+        case 'job':
+            return '作业';
+        default:
+            return '未知';
+    }
+};
+
 function ImportBackupModal(): JSX.Element {
     const [form] = Form.useForm();
     const [file, setFile] = useState<File | null>(null);
@@ -56,14 +69,14 @@ function ImportBackupModal(): JSX.Element {
                 return e?.fileList[0];
             }}
             name='dragger'
-            rules={[{ required: true, message: 'The file is required' }]}
+            rules={[{ required: true, message: '文件是必需的' }]}
         >
             <Upload.Dragger
                 listType='text'
                 fileList={file ? [file] : ([] as any[])}
                 beforeUpload={(_file: RcFile): boolean => {
                     if (!['application/zip', 'application/x-zip-compressed'].includes(_file.type)) {
-                        message.error('Only ZIP archive is supported');
+                        message.error('只支持ZIP归档');
                     } else {
                         setFile(_file);
                     }
@@ -76,7 +89,7 @@ function ImportBackupModal(): JSX.Element {
                 <p className='ant-upload-drag-icon'>
                     <InboxOutlined />
                 </p>
-                <p className='ant-upload-text'>Click or drag file to this area</p>
+                <p className='ant-upload-text'>单击或拖动文件到此区域</p>
             </Upload.Dragger>
         </Form.Item>
     );
@@ -85,7 +98,7 @@ function ImportBackupModal(): JSX.Element {
         if (value) {
             const extension = value.toLowerCase().split('.')[1];
             if (extension !== 'zip') {
-                return Promise.reject(new Error('Only ZIP archive is supported'));
+                return Promise.reject(new Error('只支持ZIP归档'));
             }
         }
 
@@ -94,12 +107,12 @@ function ImportBackupModal(): JSX.Element {
 
     const renderCustomName = (): JSX.Element => (
         <Form.Item
-            label={<Text strong>File name</Text>}
+            label={<Text strong>文件名</Text>}
             name='fileName'
-            rules={[{ validator: validateFileName }, { required: true, message: 'Please, specify a name' }]}
+            rules={[{ validator: validateFileName }, { required: true, message: '请指定名称' }]}
         >
             <Input
-                placeholder='Backup file name'
+                placeholder='备份文件名'
                 className='cvat-modal-import-filename-input'
             />
         </Form.Item>
@@ -118,7 +131,7 @@ function ImportBackupModal(): JSX.Element {
         (values: FormValues): void => {
             if (file === null && !values.fileName) {
                 Notification.error({
-                    message: 'No backup file specified',
+                    message: '没有指定备份文件',
                 });
                 return;
             }
@@ -130,7 +143,7 @@ function ImportBackupModal(): JSX.Element {
             dispatch(importBackupAsync(instanceType, sourceStorage, file || (values.fileName) as string));
 
             Notification.info({
-                message: `The ${instanceType} creating from the backup has been started`,
+                message: `备份创建${instanceTypeToChinese(instanceType)}已经启动`,
                 className: 'cvat-notification-notice-import-backup-start',
             });
             closeModal();
@@ -142,16 +155,18 @@ function ImportBackupModal(): JSX.Element {
         <Modal
             title={(
                 <Text strong>
-                    {`Create ${instanceType} from backup`}
+                    {`从备份中创建${instanceTypeToChinese(instanceType)}`}
                 </Text>
             )}
             open={modalVisible}
             onCancel={closeModal}
             onOk={() => form.submit()}
             className='cvat-modal-import-backup'
+            cancelText='取消'
+            okText='创建'
         >
             <Form
-                name={`Create ${instanceType} from backup file`}
+                name={`从备份文件创建${instanceTypeToChinese(instanceType)}`}
                 form={form}
                 onFinish={handleImport}
                 layout='vertical'
@@ -159,7 +174,7 @@ function ImportBackupModal(): JSX.Element {
             >
                 <SourceStorageField
                     instanceId={null}
-                    storageDescription='Specify source storage with backup'
+                    storageDescription='指定带备份的源存储'
                     locationValue={selectedSourceStorage.location}
                     onChangeStorage={(value: StorageData) => setSelectedSourceStorage(new Storage(value))}
                     onChangeLocationValue={(value: StorageLocation) => {

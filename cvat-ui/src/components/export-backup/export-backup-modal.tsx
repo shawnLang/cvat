@@ -56,9 +56,9 @@ function ExportBackupModal(): JSX.Element {
 
     useEffect(() => {
         if (instance instanceof core.classes.Project) {
-            setInstanceType(`project #${instance.id}`);
+            setInstanceType(`项目 #${instance.id}`);
         } else if (instance instanceof core.classes.Task) {
-            setInstanceType(`task #${instance.id}`);
+            setInstanceType(`任务 #${instance.id}`);
         }
     }, [instance]);
 
@@ -71,8 +71,8 @@ function ExportBackupModal(): JSX.Element {
 
     useEffect(() => {
         // eslint-disable-next-line prefer-template
-        const message = `Export backup to ${(defaultStorageLocation) ? defaultStorageLocation.split('_')[0] : 'local'} ` +
-                        `storage ${(defaultStorageCloudId) ? `№${defaultStorageCloudId}` : ''}`;
+        const message = `导出备份到 ${(defaultStorageLocation) ? defaultStorageLocation.split('_')[0] : '本地'} ` +
+                        `存储 ${(defaultStorageCloudId) ? `№${defaultStorageCloudId}` : ''}`;
         setHelpMessage(message);
     }, [defaultStorageLocation, defaultStorageCloudId]);
 
@@ -102,9 +102,9 @@ function ExportBackupModal(): JSX.Element {
             );
             closeModal();
 
-            const description = 'Backup export was started. You can check progress [here](/requests).';
+            const description = '启动备份导出. 你可以查看进度 [here](/requests).';
             Notification.info({
-                message: 'Backup export started',
+                message: '备份导出已启动',
                 description: (
                     <CVATMarkdown history={history}>{description}</CVATMarkdown>
                 ),
@@ -116,10 +116,12 @@ function ExportBackupModal(): JSX.Element {
 
     return (
         <Modal
-            title={<Text strong>{`Export ${instanceType}`}</Text>}
+            title={<Text strong>{`导出 ${instanceType}`}</Text>}
             open={!!instance}
             onCancel={closeModal}
             onOk={() => form.submit()}
+            cancelText='取消'
+            okText='确定'
             className={`cvat-modal-export-${instanceType.split(' ')[0]}`}
             destroyOnClose
         >
@@ -130,19 +132,19 @@ function ExportBackupModal(): JSX.Element {
                 initialValues={initialValues}
                 onFinish={handleExport}
             >
-                <Form.Item label={<Text strong>Custom name</Text>} name='customName'>
+                <Form.Item label={<Text strong>自定义名称</Text>} name='customName'>
                     <Input
-                        placeholder='Custom name for a backup file'
+                        placeholder='备份文件的自定义名称'
                         suffix='.zip'
                         className='cvat-modal-export-filename-input'
                     />
                 </Form.Item>
                 <TargetStorageField
                     instanceId={instance?.id}
-                    switchDescription='Use default settings'
+                    switchDescription='使用默认设置'
                     switchHelpMessage={helpMessage}
                     useDefaultStorage={useDefaultStorage}
-                    storageDescription={`Specify target storage for export ${instanceType}`}
+                    storageDescription={`指定 ${instanceType} 要导出的目标存储`}
                     locationValue={storageLocation}
                     onChangeUseDefaultStorage={(value: boolean) => setUseDefaultStorage(value)}
                     onChangeLocationValue={(value: StorageLocation) => setStorageLocation(value)}

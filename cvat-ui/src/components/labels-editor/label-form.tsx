@@ -158,7 +158,7 @@ export default class LabelForm extends React.Component<Props> {
                 rules={[
                     {
                         required: true,
-                        message: 'Please specify a name',
+                        message: '请填写名称',
                     },
                     {
                         pattern: patterns.validateAttributeName.pattern,
@@ -167,7 +167,7 @@ export default class LabelForm extends React.Component<Props> {
                     {
                         validator: (_rule: any, attrName: string) => {
                             if (attrNames.includes(attrName) && attr.name !== attrName) {
-                                return Promise.reject(new Error('Attribute name must be unique for the label'));
+                                return Promise.reject(new Error('属性名称对于标签必须是唯一的'));
                             }
                             return Promise.resolve();
                         },
@@ -232,13 +232,13 @@ export default class LabelForm extends React.Component<Props> {
         const validator = (_: any, values: string[]): Promise<void> => {
             if (locked && existingValues) {
                 if (!equalArrayHead(existingValues, values)) {
-                    return Promise.reject(new Error('You can only append new values'));
+                    return Promise.reject(new Error('您只能附加新值'));
                 }
             }
 
             for (const value of values) {
                 if (!patterns.validateAttributeValue.pattern.test(value)) {
-                    return Promise.reject(new Error(`Invalid attribute value: "${value}"`));
+                    return Promise.reject(new Error(`属性值无效: "${value}"`));
                 }
             }
 
@@ -270,7 +270,7 @@ export default class LabelForm extends React.Component<Props> {
                             return (
                                 <CVATTooltip
                                     placement='bottom'
-                                    title={isDefault ? 'This value is default' : 'Click to set default value'}
+                                    title={isDefault ? '此值为默认值' : '单击设置默认值'}
                                 >
                                     <Tag
                                         visible
@@ -310,12 +310,12 @@ export default class LabelForm extends React.Component<Props> {
         const { key } = fieldInstance;
 
         return (
-            <CVATTooltip title='Specify a default value'>
+            <CVATTooltip title='指定默认值'>
                 <Form.Item
                     rules={[
                         {
                             required: true,
-                            message: 'Please, specify a default value',
+                            message: '请指定默认值',
                         }]}
                     name={[key, 'values']}
                 >
@@ -337,27 +337,27 @@ export default class LabelForm extends React.Component<Props> {
 
             const numbers = strNumbers.split(';').map((number): number => Number.parseFloat(number));
             if (numbers.length !== 3) {
-                return Promise.reject(new Error('Three numbers are expected'));
+                return Promise.reject(new Error('预计有三个数字'));
             }
 
             for (const number of numbers) {
                 if (Number.isNaN(number)) {
-                    return Promise.reject(new Error(`"${number}" is not a number`));
+                    return Promise.reject(new Error(`"${number}" 不是一个数字`));
                 }
             }
 
             const [min, max, step] = numbers;
 
             if (min >= max) {
-                return Promise.reject(new Error('Minimum must be less than maximum'));
+                return Promise.reject(new Error('最小值必须小于最大值'));
             }
 
             if (max - min < step) {
-                return Promise.reject(new Error('Step must be less than minmax difference'));
+                return Promise.reject(new Error('步长必须小于最小差值'));
             }
 
             if (step <= 0) {
-                return Promise.reject(new Error('Step must be a positive number'));
+                return Promise.reject(new Error('步长必须为正数'));
             }
 
             return Promise.resolve();
@@ -369,7 +369,7 @@ export default class LabelForm extends React.Component<Props> {
                 rules={[
                     {
                         required: true,
-                        message: 'Please set a range',
+                        message: '请设置范围',
                     },
                     {
                         validator,
@@ -386,7 +386,7 @@ export default class LabelForm extends React.Component<Props> {
 
         return (
             <Form.Item name={[key, 'values']}>
-                <Input.TextArea className='cvat-attribute-values-input' placeholder='Default value' />
+                <Input.TextArea className='cvat-attribute-values-input' placeholder='默认值' />
             </Form.Item>
         );
     }
@@ -413,7 +413,7 @@ export default class LabelForm extends React.Component<Props> {
         const { key } = fieldInstance;
 
         return (
-            <CVATTooltip title='Delete the attribute'>
+            <CVATTooltip title='删除属性'>
                 <Form.Item>
                     <Button
                         disabled={attr.id >= 0} // temporary disabled, does not work on the server
@@ -424,8 +424,8 @@ export default class LabelForm extends React.Component<Props> {
                                 Modal.confirm({
                                     className: 'cvat-modal-delete-label-attribute',
                                     icon: <ExclamationCircleOutlined />,
-                                    title: `Do you want to remove the "${attr.name}" attribute?`,
-                                    content: 'This action cannot be undone. All annotations associated to the attribute will be removed',
+                                    title: `是否要删除 "${attr.name}" 属性?`,
+                                    content: '此操作不能撤消。与该属性关联的所有标注都将被删除',
                                     type: 'warning',
                                     okButtonProps: { type: 'primary', danger: true },
                                     onOk: () => {
@@ -498,7 +498,7 @@ export default class LabelForm extends React.Component<Props> {
                 rules={[
                     {
                         required: true,
-                        message: 'Please specify a name',
+                        message: '请指定名称',
                     },
                     {
                         pattern: patterns.validateAttributeName.pattern,
@@ -507,7 +507,7 @@ export default class LabelForm extends React.Component<Props> {
                     {
                         validator: (_rule: any, labelName: string) => {
                             if (labelNames.includes(labelName) && label?.name !== labelName) {
-                                return Promise.reject(new Error('Label name must be unique'));
+                                return Promise.reject(new Error('标签名称必须唯一'));
                             }
                             return Promise.resolve();
                         },
@@ -591,7 +591,7 @@ export default class LabelForm extends React.Component<Props> {
         const { onCancel } = this.props;
 
         return (
-            <CVATTooltip title='Do not save the label and return'>
+            <CVATTooltip title='不保存标签并返回'>
                 <Button
                     className='cvat-cancel-new-label-button'
                     type='primary'

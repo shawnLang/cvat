@@ -201,7 +201,7 @@ function QualityControlPage(): JSX.Element {
                 dispatch(reducerActions.setValidationLayout(validationLayout));
             }
         } catch (error: unknown) {
-            dispatch(reducerActions.setError(error instanceof Error ? error : new Error('Unknown error')));
+            dispatch(reducerActions.setError(error instanceof Error ? error : new Error('未知错误')));
         } finally {
             dispatch(reducerActions.setFetching(false));
         }
@@ -239,10 +239,10 @@ function QualityControlPage(): JSX.Element {
                     dispatch(reducerActions.setQualitySettingsFetching(true));
                     const responseSettings = await settings.save();
                     dispatch(reducerActions.setQualitySettings(responseSettings));
-                    notification.info({ message: 'Settings have been updated' });
+                    notification.info({ message: '设置已更新' });
                 } catch (error: unknown) {
                     notification.error({
-                        message: 'Could not save quality settings',
+                        message: '无法保存质量设置',
                         description: typeof Error === 'object' ? (error as object).toString() : '',
                     });
                     throw error;
@@ -335,7 +335,7 @@ function QualityControlPage(): JSX.Element {
                 <div className='cvat-quality-control-page-error'>
                     <Result
                         status='error'
-                        title='Could not open the page'
+                        title='无法打开页面'
                         subTitle={error.message}
                         extra={backNavigation}
                     />
@@ -358,8 +358,8 @@ function QualityControlPage(): JSX.Element {
         title = (
             <Col className='cvat-quality-page-header'>
                 <Title level={4} className='cvat-text-color'>
-                    Quality control for
-                    <Link to={`/tasks/${instance.id}`}>{` Task #${instance.id}`}</Link>
+                    质量控制
+                    <Link to={`/tasks/${instance.id}`}>{` 任务 #${instance.id}`}</Link>
                 </Title>
             </Col>
         );
@@ -369,7 +369,7 @@ function QualityControlPage(): JSX.Element {
         if (qualitySettings) {
             tabsItems.push({
                 key: 'overview',
-                label: 'Overview',
+                label: '概述',
                 children: (
                     <QualityOverviewTab task={instance} qualitySettings={qualitySettings} />
                 ),
@@ -380,7 +380,7 @@ function QualityControlPage(): JSX.Element {
             if (validationLayout && qualitySettings) {
                 tabsItems.push({
                     key: 'management',
-                    label: 'Management',
+                    label: '管理',
                     children: (
                         <QualityManagementTab
                             task={instance}
@@ -399,7 +399,7 @@ function QualityControlPage(): JSX.Element {
         if (qualitySettings) {
             tabsItems.push({
                 key: 'settings',
-                label: 'Settings',
+                label: '设置',
                 children: (
                     <QualitySettingsTab
                         fetching={qualitySettingsFetching}

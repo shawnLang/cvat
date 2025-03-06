@@ -46,7 +46,7 @@ function QualitySettingsTab(props: Readonly<Props>): JSX.Element | null {
                     settings={settings}
                     onSave={onSave}
                 />
-            ) : <Text>No quality settings found</Text> }
+            ) : <Text>未找到质量设置</Text> }
         </div>
     );
 }

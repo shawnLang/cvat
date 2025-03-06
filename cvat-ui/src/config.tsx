@@ -143,9 +143,8 @@ const PAID_PLACEHOLDER_CONFIG = {
     url: 'https://www.cvat.ai/pricing/cloud',
     features: {
         qualityControl:
-        'The Quality Control feature enables effortless evaluation of annotation quality by creating' +
-        ' a Ground Truth job that works as benchmark. CVAT automatically compares all task-related jobs' +
-        ' to this benchmark, calculating annotation precision to ensure high-quality results.',
+        '通过创建作为基准的Ground Truth作业，质量控制功能可以轻松地评估注释质量。' +
+            'CVAT自动将所有与任务相关的作业与此基准进行比较，计算注释精度以确保高质量的结果.',
     },
 };
 

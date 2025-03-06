@@ -198,7 +198,7 @@ function RemoteBrowser(props: Props): JSX.Element {
             } catch (error: any) {
                 if (isRelevant()) {
                     notification.error({
-                        message: 'Storage content fetching failed',
+                        message: '存储内容获取失败',
                         description: error.toString(),
                     });
                 }
@@ -325,11 +325,11 @@ function RemoteBrowser(props: Props): JSX.Element {
             <>
                 <Empty />
                 <Paragraph className='cvat-remote-browser-empty'>
-                    Please, be sure you had
+                    请确保在构建CVAT之前已
                     <Text strong>
-                        <a href={SHARE_MOUNT_GUIDE_URL}> mounted </a>
+                        <a href={SHARE_MOUNT_GUIDE_URL}> 挂载 </a>
                     </Text>
-                    share before you built CVAT and the shared storage contains files
+                    共享，并且共享存储包含文件
                 </Paragraph>
             </>
         );
@@ -398,7 +398,7 @@ function RemoteBrowser(props: Props): JSX.Element {
                             message={(
                                 <>
                                     <Text>
-                                        There is no intersection between the specified prefix and the default one
+                                        指定的前缀与缺省前缀没有交集
                                     </Text>
                                     <Text strong>{` "${defaultPrefix}". `}</Text>
                                 </>

@@ -241,7 +241,7 @@ export default function (state = defaultState, action: AnyAction): Notifications
                     auth: {
                         ...state.errors.auth,
                         authenticated: {
-                            message: 'Could not check authentication on the server',
+                            message: '无法在服务器上检查身份验证',
                             reason: action.payload.error,
                             shouldLog: shouldLog(action.payload.error),
                         },
@@ -257,7 +257,7 @@ export default function (state = defaultState, action: AnyAction): Notifications
                     auth: {
                         ...state.errors.auth,
                         login: {
-                            message: 'Could not login on the server',
+                            message: '无法登录服务器',
                             reason: action.payload.error,
                             shouldLog: shouldLog(action.payload.error),
                             className: 'cvat-notification-notice-login-failed',
@@ -274,7 +274,7 @@ export default function (state = defaultState, action: AnyAction): Notifications
                     auth: {
                         ...state.errors.auth,
                         logout: {
-                            message: 'Could not logout from the server',
+                            message: '无法从服务器注销',
                             reason: action.payload.error,
                             shouldLog: shouldLog(action.payload.error),
                         },
@@ -290,7 +290,7 @@ export default function (state = defaultState, action: AnyAction): Notifications
                     auth: {
                         ...state.errors.auth,
                         register: {
-                            message: 'Could not register on the server',
+                            message: '无法在服务器上注册',
                             reason: action.payload.error,
                             shouldLog: shouldLog(action.payload.error),
                         },
@@ -307,8 +307,8 @@ export default function (state = defaultState, action: AnyAction): Notifications
                         auth: {
                             ...state.messages.auth,
                             registerDone: {
-                                message: `To use your account, you need to confirm the email address. \
-                                We have sent an email with a confirmation link to ${action.payload.user.email}.`,
+                                message: `要使用您的帐户，您需要确认邮件地址. \
+                                我们已经发送了一封电子邮件，其中有一个确认链接到 ${action.payload.user.email}.`,
                             },
                         },
                     },
@@ -327,7 +327,7 @@ export default function (state = defaultState, action: AnyAction): Notifications
                     auth: {
                         ...state.messages.auth,
                         changePasswordDone: {
-                            message: 'New password has been saved.',
+                            message: '已保存新密码.',
                         },
                     },
                 },
@@ -341,7 +341,7 @@ export default function (state = defaultState, action: AnyAction): Notifications
                     auth: {
                         ...state.errors.auth,
                         changePassword: {
-                            message: 'Could not change password',
+                            message: '无法更改密码',
                             reason: action.payload.error,
                             shouldLog: shouldLog(action.payload.error),
                             className: 'cvat-notification-notice-change-password-failed',
@@ -358,8 +358,8 @@ export default function (state = defaultState, action: AnyAction): Notifications
                     auth: {
                         ...state.messages.auth,
                         requestPasswordResetDone: {
-                            message: `Check your email for a link to reset your password.
-                            If it doesn't appear within a few minutes, check your spam folder.`,
+                            message: `检查您的邮件链接重置您的密码.
+                            如果它在几分钟内没有出现,请检查您的垃圾邮件文件夹.`,
                         },
                     },
                 },
@@ -373,7 +373,7 @@ export default function (state = defaultState, action: AnyAction): Notifications
                     auth: {
                         ...state.errors.auth,
                         requestPasswordReset: {
-                            message: 'Could not reset password on the server.',
+                            message: '无法在服务器上重置密码.',
                             reason: action.payload.error,
                             shouldLog: shouldLog(action.payload.error),
                         },
@@ -389,7 +389,7 @@ export default function (state = defaultState, action: AnyAction): Notifications
                     auth: {
                         ...state.messages.auth,
                         resetPasswordDone: {
-                            message: 'Password has been reset with the new password.',
+                            message: '已使用新密码重置密码.',
                         },
                     },
                 },
@@ -403,7 +403,7 @@ export default function (state = defaultState, action: AnyAction): Notifications
                     auth: {
                         ...state.errors.auth,
                         resetPassword: {
-                            message: 'Could not set new password on the server.',
+                            message: '无法在服务器上设置新密码.',
                             reason: action.payload.error,
                             shouldLog: shouldLog(action.payload.error),
                         },
@@ -419,7 +419,7 @@ export default function (state = defaultState, action: AnyAction): Notifications
                     serverAPI: {
                         ...state.errors.serverAPI,
                         fetching: {
-                            message: 'Could not receive server schema',
+                            message: '无法接收服务器schema',
                             reason: action.payload.error,
                             shouldLog: shouldLog(action.payload.error),
                         },
@@ -436,7 +436,7 @@ export default function (state = defaultState, action: AnyAction): Notifications
                         invitations: {
                             ...state.messages.invitations,
                             newInvitations: {
-                                message: 'You\'ve received an invitation to join an organization! [Click here](/invitations) to get details.',
+                                message: '您收到了加入某个组织的邀请! [点击这里](/invitations) 了解详情.',
                             },
                         },
                     },
@@ -452,7 +452,7 @@ export default function (state = defaultState, action: AnyAction): Notifications
                     invitations: {
                         ...state.errors.invitations,
                         fetching: {
-                            message: 'Could not get invitations',
+                            message: '没有收到邀请',
                             reason: action.payload.error,
                             shouldLog: shouldLog(action.payload.error),
                             className: 'cvat-notification-notice-get-invitations-failed',
@@ -469,7 +469,7 @@ export default function (state = defaultState, action: AnyAction): Notifications
                     invitations: {
                         ...state.errors.invitations,
                         acceptingInvitation: {
-                            message: 'Could not accept invitation',
+                            message: '无法接受邀请',
                             reason: action.payload.error,
                             shouldLog: shouldLog(action.payload.error),
                             className: 'cvat-notification-notice-accept-organization-invitation-failed',
@@ -486,7 +486,7 @@ export default function (state = defaultState, action: AnyAction): Notifications
                     invitations: {
                         ...state.errors.invitations,
                         decliningInvitation: {
-                            message: 'Could not decline invitation',
+                            message: '不能拒绝邀请',
                             reason: action.payload.error,
                             shouldLog: shouldLog(action.payload.error),
                             className: 'cvat-notification-notice-decline-organization-invitation-failed',
@@ -503,7 +503,7 @@ export default function (state = defaultState, action: AnyAction): Notifications
                     invitations: {
                         ...state.errors.invitations,
                         resendingInvitation: {
-                            message: 'Could not resend invitation',
+                            message: '不能重新发送邀请',
                             reason: action.payload.error,
                             shouldLog: shouldLog(action.payload.error),
                             className: 'cvat-notification-notice-resend-organization-invitation-failed',
@@ -520,7 +520,7 @@ export default function (state = defaultState, action: AnyAction): Notifications
                     invitations: {
                         ...state.messages.invitations,
                         resendingInvitation: {
-                            message: 'Invitation was sent successfully',
+                            message: '邀请函发送成功',
                         },
                     },
                 },
@@ -536,7 +536,7 @@ export default function (state = defaultState, action: AnyAction): Notifications
                         ...state.errors.exporting,
                         dataset: {
                             message:
-                                'Could not export dataset for the ' +
+                                '无法导出数据集 ' +
                                 `[${instanceType} ${instance.id}](/${instanceType}s/${instance.id})`,
                             reason: action.payload.error,
                             shouldLog: shouldLog(action.payload.error),
@@ -1320,7 +1320,7 @@ export default function (state = defaultState, action: AnyAction): Notifications
                     annotation: {
                         ...state.errors.annotation,
                         search: {
-                            message: 'Could not execute search annotations',
+                            message: '无法执行搜索标注',
                             reason: action.payload.error,
                             shouldLog: shouldLog(action.payload.error),
                         },
@@ -1336,7 +1336,7 @@ export default function (state = defaultState, action: AnyAction): Notifications
                     annotation: {
                         ...state.errors.annotation,
                         savingLogs: {
-                            message: 'Could not send logs to the server',
+                            message: '无法将日志发送到服务器',
                             reason: action.payload.error,
                             shouldLog: shouldLog(action.payload.error),
                         },

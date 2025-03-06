@@ -48,9 +48,9 @@ export default function DetailsComponent(props: DetailsComponentProps): JSX.Elem
             <Row justify='space-between' className='cvat-project-description'>
                 <Col>
                     <Text type='secondary'>
-                        {`项目 #${project.id} 已创建`}
-                        {project.owner ? ` by ${project.owner.username}` : null}
-                        {` on ${moment(project.createdDate).format('YYYY-MM-DD')}`}
+                        {`项目 #${project.id} `}
+                        {project.owner ? `由 ${project.owner.username}` : null}
+                        {` 创建于 ${moment(project.createdDate).format('YYYY-MM-DD')}`}
                     </Text>
                     <MdGuideControl instanceType='project' id={project.id} />
                     <BugTrackerEditor

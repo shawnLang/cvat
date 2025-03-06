@@ -98,17 +98,17 @@ export default class BasicConfigurationForm extends React.PureComponent<Props> {
                                 你可以在模板中嵌入:
                                 <ul>
                                     <li>
-                                        一些文本 - 任意文本
+                                        some_text - 任意文本
                                     </li>
                                     <li>
                                         {'{{'}
-                                        索引
+                                        index
                                         {'}}'}
                                         &nbsp;- 集合中索引文件
                                     </li>
                                     <li>
                                         {'{{'}
-                                        文件名
+                                        file_name
                                         {'}}'}
                                         &nbsp;- 文件名
                                     </li>

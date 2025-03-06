@@ -64,12 +64,12 @@ function ExportDatasetModal(props: StateToProps): JSX.Element {
 
     useEffect(() => {
         if (instance instanceof Project) {
-            setInstanceType(`project #${instance.id}`);
+            setInstanceType(`项目 #${instance.id}`);
         } else if (instance instanceof Task || instance instanceof Job) {
             if (instance instanceof Task) {
-                setInstanceType(`task #${instance.id}`);
+                setInstanceType(`任务 #${instance.id}`);
             } else {
-                setInstanceType(`job #${instance.id}`);
+                setInstanceType(`工作 #${instance.id}`);
             }
             if (instance.mode === 'interpolation' && instance.dimension === '2d') {
                 form.setFieldsValue({ selectedFormat: 'CVAT for video 1.1' });
@@ -117,11 +117,11 @@ function ExportDatasetModal(props: StateToProps): JSX.Element {
                 ),
             );
             closeModal();
-            const resource = values.saveImages ? 'Dataset' : 'Annotations';
-            const description = `${resource} export was started for ${instanceType}. ` +
-            'You can check progress and download the file [here](/requests).';
+            const resource = values.saveImages ? '数据集' : '标注';
+            const description = `为 ${instanceType} 启动 ${resource} 导出. ` +
+            '您可以查看进度并下载文件 [here](/requests).';
             Notification.info({
-                message: `${resource} export started`,
+                message: `${resource} 导出开始`,
                 description: (
                     <CVATMarkdown history={history}>{description}</CVATMarkdown>
                 ),
@@ -134,10 +134,12 @@ function ExportDatasetModal(props: StateToProps): JSX.Element {
 
     return (
         <Modal
-            title={<Text strong>{`Export ${instanceType} as a dataset`}</Text>}
+            title={<Text strong>{`导出 ${instanceType} 数据集`}</Text>}
             open={!!instance}
             onCancel={closeModal}
             onOk={() => form.submit()}
+            cancelText='取消'
+            okText='确定'
             className={`cvat-modal-export-${instanceType.split(' ')[0]}`}
             destroyOnClose
         >
@@ -150,10 +152,10 @@ function ExportDatasetModal(props: StateToProps): JSX.Element {
             >
                 <Form.Item
                     name='selectedFormat'
-                    label={<Text strong>Export format</Text>}
-                    rules={[{ required: true, message: 'Format must be selected' }]}
+                    label={<Text strong>导出格式</Text>}
+                    rules={[{ required: true, message: '必须选择格式' }]}
                 >
-                    <Select virtual={false} placeholder='Select dataset format' className='cvat-modal-export-select'>
+                    <Select virtual={false} placeholder='选择数据集格式' className='cvat-modal-export-select'>
                         {dumpers
                             .sort((a: Dumper, b: Dumper) => a.name.localeCompare(b.name))
                             .filter(
@@ -182,22 +184,22 @@ function ExportDatasetModal(props: StateToProps): JSX.Element {
                     >
                         <Switch className='cvat-modal-export-save-images' />
                     </Form.Item>
-                    <Text strong>Save images</Text>
+                    <Text strong>保存图片</Text>
                 </Space>
 
-                <Form.Item label={<Text strong>Custom name</Text>} name='customName'>
+                <Form.Item label={<Text strong>自定义名称</Text>} name='customName'>
                     <Input
-                        placeholder='Custom name for a dataset'
+                        placeholder='数据集的自定义名称'
                         suffix='.zip'
                         className='cvat-modal-export-filename-input'
                     />
                 </Form.Item>
                 <TargetStorageField
                     instanceId={instance ? instance.id : null}
-                    switchDescription='Use default settings'
+                    switchDescription='使用默认设置'
                     switchHelpMessage={helpMessage}
                     useDefaultStorage={useDefaultTargetStorage}
-                    storageDescription='Specify target storage for export dataset'
+                    storageDescription='指定导出数据集的目标存储'
                     locationValue={targetStorage.location}
                     onChangeUseDefaultStorage={(value: boolean) => setUseDefaultTargetStorage(value)}
                     onChangeStorage={(value: StorageData) => setTargetStorage(value)}

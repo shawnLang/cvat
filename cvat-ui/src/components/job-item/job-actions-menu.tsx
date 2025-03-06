@@ -71,7 +71,7 @@ function JobActionsMenu(props: Props): JSX.Element {
             } else if (action.key === Actions.DELETE) {
                 Modal.confirm({
                     title: `作业 ${job.id} 将被删除`,
-                    content: '所有相关数据 (annotations) 都会丢失.继续?',
+                    content: `所有相关数据 (标注) 都会丢失.继续?`,
                     className: 'cvat-modal-confirm-delete-job',
                     onOk: () => {
                         dispatch(deleteJobAsync(job));
@@ -81,6 +81,7 @@ function JobActionsMenu(props: Props): JSX.Element {
                         danger: true,
                     },
                     okText: '删除',
+                    cancelText: '取消',
                 });
             }
         },

@@ -42,7 +42,7 @@ export default function ProjectItemComponent(props: Props): JSX.Element {
     const ribbonPlugins = usePlugins((state: CombinedState) => state.plugins.components.projectItem.ribbon, props);
     const height = useCardHeight();
     const ownerName = instance.owner ? instance.owner.username : null;
-    const updated = moment(instance.updatedDate).fromNow();
+    const updated = moment(instance.updatedDate).format('YYYY-MM-DD');
     const deletes = useSelector((state: CombinedState) => state.projects.activities.deletes);
     const deleted = instance.id in deletes ? deletes[instance.id] : false;
 

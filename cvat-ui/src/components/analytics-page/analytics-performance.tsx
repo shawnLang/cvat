@@ -182,7 +182,7 @@ function AnalyticsOverview(props: Props): JSX.Element | null {
         <div className='cvat-analytics-overview'>
             <Row justify='space-between'>
                 <Col>
-                    <CVATTooltip title='Request calculating a new report'>
+                    <CVATTooltip title='请求计算一个新的报告'>
                         <Button
                             className='cvat-analytics-refresh-button'
                             onClick={onCreateReport}
@@ -191,26 +191,26 @@ function AnalyticsOverview(props: Props): JSX.Element | null {
                         />
                     </CVATTooltip>
                     <Text type='secondary'>
-                        { reportRefreshingStatus || `Created ${report?.id ? moment(report.createdDate).fromNow() : ''}`}
+                        { reportRefreshingStatus || `创建 ${report?.id ? moment.utc(report.createdDate).local().format('YYYY-MM-DD') : ''}`}
                     </Text>
                 </Col>
                 <Col>
                     <Select
-                        placeholder='Select time period'
+                        placeholder='选择时间段'
                         value={timePeriod}
                         onChange={onTimePeriodChange}
                         options={[{
                             value: DateIntervals.LAST_WEEK,
-                            label: DateIntervals.LAST_WEEK,
+                            label: '最近一周',
                         }, {
                             value: DateIntervals.LAST_MONTH,
-                            label: DateIntervals.LAST_MONTH,
+                            label: '最近一月',
                         }, {
                             value: DateIntervals.LAST_QUARTER,
-                            label: DateIntervals.LAST_QUARTER,
+                            label: '最近一季',
                         }, {
                             value: DateIntervals.LAST_YEAR,
-                            label: DateIntervals.LAST_YEAR,
+                            label: '最近一年',
                         }]}
                     />
                 </Col>
