@@ -55,22 +55,22 @@ function constructName(operation: typeof Request['operation']): string | null {
     } = operation;
 
     if (target === 'project' && projectID) {
-        return `Project #${projectID}`;
+        return `项目 #${projectID}`;
     }
     if (target === 'task' && taskID) {
-        return `Task #${taskID}`;
+        return `任务 #${taskID}`;
     }
     if (target === 'job' && jobID) {
-        return `Job #${jobID}`;
+        return `作业 #${jobID}`;
     }
     return null;
 }
 
 function constructTimestamps(request: Request): JSX.Element {
-    const started = moment(request.startedDate).format('MMM Do YY, H:mm');
-    const finished = moment(request.finishedDate).format('MMM Do YY, H:mm');
-    const created = moment(request.createdDate).format('MMM Do YY, H:mm');
-    const expired = moment(request.expiryDate).format('MMM Do YY, H:mm');
+    const started = moment(request.startedDate).format('YYYY-MM-DD HH:mm');
+    const finished = moment(request.finishedDate).format('YYYY-MM-DD HH:mm');
+    const created = moment(request.createdDate).format('YYYY-MM-DD HH:mm');
+    const expired = moment(request.expiryDate).format('YYYY-MM-DD HH:mm');
     const { operation: { type }, url } = request;
 
     switch (request.status) {
@@ -80,10 +80,10 @@ function constructTimestamps(request: Request): JSX.Element {
                 return (
                     <>
                         <Row>
-                            <Text type='secondary'>{`Started by ${request.owner.username} on ${started}`}</Text>
+                            <Text type='secondary'>{`由 ${request.owner.username} 在 ${started} 开始`}</Text>
                         </Row>
                         <Row>
-                            <Text type='secondary'>{`Expires on ${expired}`}</Text>
+                            <Text type='secondary'>{`${expired} 到期`}</Text>
                         </Row>
                     </>
                 );
@@ -91,10 +91,10 @@ function constructTimestamps(request: Request): JSX.Element {
             return (
                 <>
                     <Row>
-                        <Text type='secondary'>{`Started by ${request.owner.username} on ${started}`}</Text>
+                        <Text type='secondary'>{`由 ${request.owner.username} 在 ${started} 开始`}</Text>
                     </Row>
                     <Row>
-                        <Text type='secondary'>{`Finished on ${finished}`}</Text>
+                        <Text type='secondary'>{`${finished} 完成`}</Text>
                     </Row>
                 </>
             );
@@ -102,11 +102,11 @@ function constructTimestamps(request: Request): JSX.Element {
         case RQStatus.FAILED: {
             return (request.startedDate ? (
                 <Row>
-                    <Text type='secondary'>{`Started by ${request.owner.username} on ${started}`}</Text>
+                    <Text type='secondary'>{`由 ${request.owner.username} 在 ${started} 开始`}</Text>
                 </Row>
             ) : (
                 <Row>
-                    <Text type='secondary'>{`Enqueued by ${request.owner.username} on ${created}`}</Text>
+                    <Text type='secondary'>{`由 ${request.owner.username} 在 ${created} 排队`}</Text>
                 </Row>
             ));
         }
@@ -114,10 +114,10 @@ function constructTimestamps(request: Request): JSX.Element {
             return (
                 <>
                     <Row>
-                        <Text type='secondary'>{`Enqueued by ${request.owner.username} on ${created}`}</Text>
+                        <Text type='secondary'>{`由 ${request.owner.username} 在 ${created} 排队`}</Text>
                     </Row>
                     <Row>
-                        <Text type='secondary'>{`Started on ${started}`}</Text>
+                        <Text type='secondary'>{`${started} 开始`}</Text>
                     </Row>
                 </>
             );
@@ -125,7 +125,7 @@ function constructTimestamps(request: Request): JSX.Element {
         default: {
             return (
                 <Row>
-                    <Text type='secondary'>{`Enqueued by ${request.owner.username} on ${created}`}</Text>
+                    <Text type='secondary'>{`由 ${request.owner.username} 在 ${created} 排队`}</Text>
                 </Row>
             );
         }
@@ -166,7 +166,7 @@ function RequestCard(props: Props): JSX.Element {
     if (request?.url) {
         menuItems.push({
             key: 'download',
-            label: 'Download',
+            label: '下载',
             onClick: () => {
                 const downloadAnchor = window.document.getElementById('downloadAnchor') as HTMLAnchorElement;
                 downloadAnchor.href = request.url;
@@ -180,7 +180,7 @@ function RequestCard(props: Props): JSX.Element {
     if (request.status === RQStatus.QUEUED) {
         menuItems.push({
             key: 'cancel',
-            label: 'Cancel',
+            label: '取消',
             onClick: () => {
                 dispatch(cancelRequestAsync(request, () => {
                     dispatch(requestsActions.disableRequest(request));

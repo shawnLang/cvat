@@ -5,7 +5,7 @@
 export function toClipboard(text: string): void {
     const fallback = (): void => {
         // eslint-disable-next-line
-        window.prompt('Browser Clipboard API not allowed, please copy manually', text);
+        window.prompt('浏览器剪贴板API不允许，请手动复制', text);
     };
 
     if (window.isSecureContext) {

@@ -119,7 +119,7 @@ function ExportDatasetModal(props: StateToProps): JSX.Element {
             closeModal();
             const resource = values.saveImages ? '数据集' : '标注';
             const description = `为 ${instanceType} 启动 ${resource} 导出. ` +
-            '您可以查看进度并下载文件 [here](/requests).';
+            '您可以查看进度并下载文件 [这里](/requests).';
             Notification.info({
                 message: `${resource} 导出开始`,
                 description: (
