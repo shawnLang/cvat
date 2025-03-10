@@ -42,9 +42,9 @@ function MessageForm(props: FormProps): JSX.Element {
         >
             <Form.Item
                 name='issue_description'
-                rules={[{ required: true, message: 'Please, fill out the field' }]}
+                rules={[{ required: true, message: '请填写该字段' }]}
             >
-                <Input autoFocus autoComplete='off' placeholder='Please, describe the issue' />
+                <Input autoFocus autoComplete='off' placeholder='请描述问题' />
             </Form.Item>
             <Row justify='space-between'>
                 <Col>
@@ -53,7 +53,7 @@ function MessageForm(props: FormProps): JSX.Element {
                         disabled={fetching}
                         className='cvat-create-issue-dialog-cancel-button'
                     >
-                        Cancel
+                        取消
                     </Button>
                 </Col>
                 <Col>
@@ -64,7 +64,7 @@ function MessageForm(props: FormProps): JSX.Element {
                         htmlType='submit'
                         className='cvat-create-issue-dialog-submit-button'
                     >
-                        Submit
+                        提交
                     </Button>
                 </Col>
             </Row>

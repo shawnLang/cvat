@@ -16,7 +16,7 @@ import Badge from 'antd/lib/badge';
 import Modal from 'antd/lib/modal';
 import { Store } from 'antd/lib/form/interface';
 
-import { SerializedAttribute, LabelType } from 'cvat-core-wrapper';
+import { SerializedAttribute, LabelType, LabelTypeToChinese } from 'cvat-core-wrapper';
 import CVATTooltip from 'components/common/cvat-tooltip';
 import ColorPicker from 'components/annotation-page/standard-workspace/objects-side-bar/color-picker';
 import { ColorizeIcon } from 'icons';
@@ -549,7 +549,7 @@ export default class LabelForm extends React.Component<Props> {
                         </Select.Option>
                     ) : types.map((type: string): JSX.Element => (
                         <Select.Option className={`cvat-label-type-option-${type}`} key={type} value={type}>
-                            {`${type[0].toUpperCase()}${type.slice(1)}`}
+                            {LabelTypeToChinese(type)}
                         </Select.Option>
                     ))}
                 </Select>

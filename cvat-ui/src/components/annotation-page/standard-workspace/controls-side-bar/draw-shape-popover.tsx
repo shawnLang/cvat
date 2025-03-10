@@ -15,7 +15,7 @@ import { ShapeType } from 'reducers';
 import { clamp } from 'utils/math';
 import LabelSelector from 'components/label-selector/label-selector';
 import CVATTooltip from 'components/common/cvat-tooltip';
-import { Label, DimensionType } from 'cvat-core-wrapper';
+import { Label, DimensionType, LabelTypeToChinese } from 'cvat-core-wrapper';
 
 interface Props {
     shapeType: ShapeType;
@@ -59,7 +59,7 @@ function DrawShapePopoverComponent(props: Props): JSX.Element {
         <div className='cvat-draw-shape-popover-content'>
             <Row justify='start'>
                 <Col>
-                    <Text className='cvat-text-color' strong>{`绘制新 ${shapeType}`}</Text>
+                    <Text className='cvat-text-color' strong>{`绘制新 ${LabelTypeToChinese(shapeType)}`}</Text>
                 </Col>
             </Row>
             <Row justify='start'>

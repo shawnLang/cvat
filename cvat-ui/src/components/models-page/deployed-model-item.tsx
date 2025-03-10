@@ -28,6 +28,7 @@ interface Props {
 }
 
 export default function DeployedModelItem(props: Props): JSX.Element {
+    moment.locale('zh-cn');
     const { model } = props;
     const [isModalShown, setIsModalShown] = useState(false);
 

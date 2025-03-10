@@ -45,6 +45,7 @@ export enum MenuActions {
 }
 
 function OrganizationTopBar(props: Props): JSX.Element {
+    moment.locale('zh-cn');
     const { organizationInstance, userInstance, fetchMembers } = props;
     const {
         owner, createdDate, description, updatedDate, slug, name, contact,

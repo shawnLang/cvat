@@ -49,6 +49,7 @@ function setUpWebhookStatus(status: number): WebhookStatus {
 }
 
 function WebhookItem(props: WebhookItemProps): JSX.Element | null {
+    moment.locale('zh-cn');
     const [isRemoved, setIsRemoved] = useState<boolean>(false);
     const [pingFetching, setPingFetching] = useState<boolean>(false);
     const history = useHistory();

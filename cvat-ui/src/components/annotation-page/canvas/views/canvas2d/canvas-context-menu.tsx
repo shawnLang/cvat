@@ -45,7 +45,9 @@ enum ReviewContextMenuKeys {
     OPEN_ISSUE = 'open_issue',
     QUICK_ISSUE_POSITION = 'quick_issue_position',
     QUICK_ISSUE_ATTRIBUTE = 'quick_issue_attribute',
-    QUICK_ISSUE_FROM_LATEST = 'quick_issue_from_latest',
+    QUICK_ISSUE_LABEL = 'quick_issue_label',
+    QUICK_ISSUE_LABEL_CLASS = 'quick_issue_label_class',
+    QUICK_ISSUE_HARD = 'quick_issue_hard',
     QUICK_ISSUE_FROM_CONFLICT = 'quick_issue_from_conflict',
     COPY_OBJECT = 'copy_object',
 }
@@ -56,7 +58,7 @@ function ReviewContextMenu({
     return (
         <Menu onClick={onClick} selectable={false} className='cvat-canvas-context-menu' style={{ top, left }}>
             <Menu.Item className='cvat-context-menu-item' key={ReviewContextMenuKeys.OPEN_ISSUE}>
-                Open an issue ...
+                打开一个问题 ...
             </Menu.Item>
             {conflict ? (
                 <Menu.Item
@@ -67,14 +69,23 @@ function ReviewContextMenu({
                 </Menu.Item>
             ) : null}
             <Menu.Item className='cvat-context-menu-item' key={ReviewContextMenuKeys.QUICK_ISSUE_POSITION}>
-                Quick issue: incorrect position
+                快速问题：位置不正确
+            </Menu.Item>
+            <Menu.Item className='cvat-context-menu-item' key={ReviewContextMenuKeys.QUICK_ISSUE_LABEL}>
+                快速问题：物种错误
+            </Menu.Item>
+            <Menu.Item className='cvat-context-menu-item' key={ReviewContextMenuKeys.QUICK_ISSUE_LABEL_CLASS}>
+                快速问题：物种种类错误
+            </Menu.Item>
+            <Menu.Item className='cvat-context-menu-item' key={ReviewContextMenuKeys.QUICK_ISSUE_HARD}>
+                快速问题：没有标注困难
             </Menu.Item>
             <Menu.Item className='cvat-context-menu-item' key={ReviewContextMenuKeys.QUICK_ISSUE_ATTRIBUTE}>
-                Quick issue: incorrect attribute
+                快速问题：属性不正确
             </Menu.Item>
             {latestComments.length ? (
                 <Menu.SubMenu
-                    title='Quick issue ...'
+                    title='快速问题 ...'
                     className='cvat-context-menu-item'
                     key={ReviewContextMenuKeys.QUICK_ISSUE_FROM_LATEST}
                 >
@@ -95,7 +106,7 @@ function ReviewContextMenu({
                     className='cvat-context-menu-item cvat-quick-copy-object'
                     key={ReviewContextMenuKeys.COPY_OBJECT}
                 >
-                    Copy annotation
+                    复制注释
                 </Menu.Item>
             ) : null}
         </Menu>
@@ -182,9 +193,15 @@ export default function CanvasContextMenu(props: Props): JSX.Element | null {
                         if (param.key === ReviewContextMenuKeys.OPEN_ISSUE) {
                             onStartIssue(points);
                         } else if (param.key === ReviewContextMenuKeys.QUICK_ISSUE_POSITION) {
-                            openIssue(points, config.QUICK_ISSUE_INCORRECT_POSITION_TEXT);
+                            openIssue(points, '位置错误');
+                        } else if (param.key === ReviewContextMenuKeys.QUICK_ISSUE_LABEL) {
+                            openIssue(points, '物种错误');
+                        } else if (param.key === ReviewContextMenuKeys.QUICK_ISSUE_LABEL_CLASS) {
+                            openIssue(points, '物种种类错误');
+                        } else if (param.key === ReviewContextMenuKeys.QUICK_ISSUE_HARD) {
+                            openIssue(points, '没有标注困难');
                         } else if (param.key === ReviewContextMenuKeys.QUICK_ISSUE_ATTRIBUTE) {
-                            openIssue(points, config.QUICK_ISSUE_INCORRECT_ATTRIBUTE_TEXT);
+                            openIssue(points, '属性错误');
                         } else if (param.key === ReviewContextMenuKeys.QUICK_ISSUE_FROM_CONFLICT) {
                             if (conflict) openIssue(points, conflict.description);
                         } else if (param.key === ReviewContextMenuKeys.COPY_OBJECT) {

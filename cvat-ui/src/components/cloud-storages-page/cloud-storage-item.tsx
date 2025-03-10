@@ -27,6 +27,7 @@ interface Props {
 }
 
 export default function CloudStorageItemComponent(props: Props): JSX.Element {
+    moment.locale('zh-cn');
     const history = useHistory();
     const dispatch = useDispatch();
 

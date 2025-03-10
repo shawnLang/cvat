@@ -25,6 +25,7 @@ import { changeShowGroundTruth } from 'actions/settings-actions';
 import { ShowGroundTruthIcon } from 'icons';
 
 export default function LabelsListComponent(): JSX.Element {
+    moment.locale('zh-cn');
     const dispatch = useDispatch();
     const frame = useSelector((state: CombinedState): number => state.annotation.player.frame.number);
     const frameIssues = useSelector((state: CombinedState): Issue[] => state.review.frameIssues);

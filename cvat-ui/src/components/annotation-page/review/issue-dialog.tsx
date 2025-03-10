@@ -37,6 +37,7 @@ interface Props {
 }
 
 export default function IssueDialog(props: Props): JSX.Element {
+    moment.locale('zh-cn');
     const ref = useRef<HTMLDivElement>(null);
     const [currentText, setCurrentText] = useState<string>('');
     const dispatch = useDispatch();
@@ -83,7 +84,7 @@ export default function IssueDialog(props: Props): JSX.Element {
 
     const onDeleteIssue = useCallback((): void => {
         Modal.confirm({
-            title: `The issue${typeof id === 'number' ? ` #${id}` : ''} will be deleted.`,
+            title: `问题${typeof id === 'number' ? ` #${id}` : ''} 将被删除.`,
             className: 'cvat-modal-confirm-remove-issue',
             onOk: () => {
                 collapse();
@@ -93,7 +94,7 @@ export default function IssueDialog(props: Props): JSX.Element {
                 type: 'primary',
             },
             autoFocusButton: 'cancel',
-            okText: 'Delete',
+            okText: '删除',
         });
     }, []);
 
@@ -120,11 +121,11 @@ export default function IssueDialog(props: Props): JSX.Element {
 
     const resolveButton = resolved ? (
         <Button loading={isFetching} className='cvat-issue-dialog-reopen-button' type='primary' onClick={reopen}>
-            Reopen
+            重新打开
         </Button>
     ) : (
         <Button loading={isFetching} className='cvat-issue-dialog-resolve-button' type='primary' onClick={resolve}>
-            Resolve
+            解决
         </Button>
     );
 
@@ -136,10 +137,10 @@ export default function IssueDialog(props: Props): JSX.Element {
         >
             <Row className='cvat-issue-dialog-header' justify='space-between'>
                 <Col>
-                    <Text strong>{typeof id === 'number' ? `Issue #${id}` : 'Issue'}</Text>
+                    <Text strong>{typeof id === 'number' ? `问题 #${id}` : '问题'}</Text>
                 </Col>
                 <Col>
-                    <CVATTooltip title='Collapse the chat'>
+                    <CVATTooltip title='折叠聊天'>
                         <CloseOutlined onClick={collapse} />
                     </CVATTooltip>
                 </Col>
@@ -147,7 +148,7 @@ export default function IssueDialog(props: Props): JSX.Element {
             <Row className='cvat-issue-dialog-chat' justify='start'>
                 {
                     lines.length > 0 ? <Col style={{ display: 'block' }}>{lines}</Col> : (
-                        <Col>No comments found</Col>
+                        <Col>未找到评论</Col>
                     )
                 }
             </Row>
@@ -171,7 +172,7 @@ export default function IssueDialog(props: Props): JSX.Element {
             <Row className='cvat-issue-dialog-footer' justify='space-between'>
                 <Col>
                     <Button type='link' className='cvat-issue-dialog-remove-button' danger onClick={onDeleteIssue}>
-                        Remove
+                        删除
                     </Button>
                 </Col>
                 <Col>
@@ -186,7 +187,7 @@ export default function IssueDialog(props: Props): JSX.Element {
                                 setCurrentText('');
                             }}
                         >
-                            Comment
+                            评论
                         </Button>
                     ) : (
                         resolveButton

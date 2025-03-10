@@ -25,13 +25,13 @@ const validationPatterns = {
     },
 
     validateUsernameLength: {
-        pattern: /(?=.{5,})/,
-        message: '用户名必须至少包含 5 个字符',
+        pattern: /(?=.{2,})/,
+        message: '用户名必须至少包含 2 个字符',
     },
 
     validateUsernameCharacters: {
-        pattern: /^[a-zA-Z0-9_\-.]{5,}$/,
-        message: '仅限字符 (a-z), (A-Z), (0-9), -, _, . 可用',
+        pattern: /^[a-zA-Z0-9_\-.\u4e00-\u9fa5]{2,}$/,
+        message: '仅限字符 (a-z), (A-Z), (0-9), -, _, . 和中文字符可用',
     },
 
     /*
@@ -46,7 +46,7 @@ const validationPatterns = {
     */
     validateName: {
         // eslint-disable-next-line
-        pattern: /^(\p{L}|\p{Pd}|\p{Cf}|\p{Pc}|['\s]){2,}$/gu,
+        pattern: /\S+/,
         message: '名称无效',
     },
 

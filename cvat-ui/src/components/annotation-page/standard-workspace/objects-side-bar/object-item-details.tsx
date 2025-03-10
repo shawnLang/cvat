@@ -51,7 +51,7 @@ function ItemAttributesComponent(props: Props): JSX.Element {
                 onChange={collapse}
                 items={[{
                     key: 'details',
-                    label: <Text style={{ fontSize: 10 }} type='secondary'>DETAILS</Text>,
+                    label: <Text style={{ fontSize: 10 }} type='secondary'>属性详情</Text>,
                     children: attributes.map(
                         (attribute: any): JSX.Element => (
                             <Row

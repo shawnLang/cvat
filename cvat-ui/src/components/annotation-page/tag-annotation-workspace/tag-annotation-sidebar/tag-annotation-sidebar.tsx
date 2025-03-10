@@ -82,14 +82,14 @@ function mapStateToProps(state: CombinedState): StateToProps {
 
 const componentShortcuts = {
     SWITCH_DRAW_MODE_TAG_ANNOTATION: {
-        name: 'Draw mode',
-        description: 'Repeat the latest procedure of drawing with the same parameters',
+        name: '绘制模式',
+        description: '使用相同的参数重复最新的绘制过程',
         sequences: ['n'],
         scope: ShortcutScope.TAG_ANNOTATION_WORKSPACE,
     },
     SWITCH_REDRAW_MODE_TAG_ANNOTATION: {
-        name: 'Redraw shape',
-        description: 'Remove selected shape and redraw it from scratch',
+        name: '重绘形状',
+        description: '删除所选形状并从头开始重新绘制',
         sequences: ['shift+n'],
         scope: ShortcutScope.TAG_ANNOTATION_WORKSPACE,
     },
@@ -262,7 +262,7 @@ function TagAnnotationSidebar(props: StateToProps & DispatchToProps): JSX.Elemen
             </span>
             <Row justify='center' className='cvat-tag-annotation-sidebar-empty'>
                 <Col>
-                    <Text strong>Can&apos;t place tag on this frame.</Text>
+                    <Text strong>这个框架上不能放标签</Text>
                 </Col>
             </Row>
         </Layout.Sider>
@@ -281,7 +281,7 @@ function TagAnnotationSidebar(props: StateToProps & DispatchToProps): JSX.Elemen
                 </span>
                 <Row justify='start' className='cvat-tag-annotation-sidebar-tag-label'>
                     <Col>
-                        <Text strong>Tag label:</Text>
+                        <Text strong>Tag标签:</Text>
                     </Col>
                 </Row>
                 <Row justify='start' className='cvat-tag-annotation-sidebar-label-select'>
@@ -308,7 +308,7 @@ function TagAnnotationSidebar(props: StateToProps & DispatchToProps): JSX.Elemen
                                 setSkipFrame(event.target.checked);
                             }}
                         >
-                            Automatically go to the next frame
+                            自动转到下一帧
                         </Checkbox>
                     </Col>
                 </Row>
@@ -320,14 +320,14 @@ function TagAnnotationSidebar(props: StateToProps & DispatchToProps): JSX.Elemen
                 <Row justify='center' className='cvat-tag-annotation-sidebar-shortcut-help'>
                     <Col>
                         <Text>
-                            Use&nbsp;
+                            使用&nbsp;
                             <Text code>N</Text>
-                            &nbsp;or digits&nbsp;
+                            &nbsp;或数字&nbsp;
                             <Text code>0-9</Text>
-                            &nbsp;to add selected tag.&nbsp;
-                            Add&nbsp;
+                            &nbsp;添加所选标签.&nbsp;
+                            添加&nbsp;
                             <Text code>Shift</Text>
-                            &nbsp;modifier to remove selected tag.
+                            &nbsp;修饰符来移除选定的标签.
                         </Text>
                     </Col>
                 </Row>

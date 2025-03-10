@@ -62,6 +62,23 @@ function getCore(): typeof cvat {
 
 type ProjectOrTaskOrJob = Project | Task | Job;
 
+const labelTypeToChinese = {
+    any: '任意',
+    rectangle: '矩形',
+    polygon: '多边形',
+    polyline: '折线',
+    points: '点',
+    ellipse: '椭圆',
+    cuboid: '立方体',
+    skeleton: '骨架',
+    mask: '蒙版',
+    tag: '标签',
+};
+
+function LabelTypeToChinese(value: string): string {
+    return labelTypeToChinese[value] || value;
+}
+
 export {
     getCore,
     ObjectState,
@@ -75,6 +92,7 @@ export {
     Source,
     ObjectType,
     LabelType,
+    LabelTypeToChinese,
     Storage,
     Webhook,
     Issue,

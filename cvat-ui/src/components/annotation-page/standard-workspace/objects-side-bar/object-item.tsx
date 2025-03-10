@@ -12,6 +12,7 @@ import ItemDetailsContainer from 'containers/annotation-page/standard-workspace/
 import { ObjectType, ShapeType, ColorBy } from 'reducers';
 import ObjectItemElementComponent from './object-item-element';
 import ItemBasics from './object-item-basics';
+import { LabelTypeToChinese } from 'cvat-core-wrapper';
 
 interface Props {
     normalizedKeyMap: Record<string, string>;
@@ -83,7 +84,7 @@ function ObjectItemComponent(props: Props): JSX.Element {
     const type =
         objectType === ObjectType.TAG ?
             ObjectType.TAG.toUpperCase() :
-            `${shapeType.toUpperCase()} ${objectType.toUpperCase()}`;
+            `${LabelTypeToChinese(shapeType)} ${objectType.toUpperCase()}`;
 
     const className = !activated ?
         'cvat-objects-sidebar-state-item' :

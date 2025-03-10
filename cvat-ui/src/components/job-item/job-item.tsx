@@ -108,6 +108,7 @@ function ReviewSummaryComponent({ jobInstance }: { jobInstance: any }): JSX.Elem
 }
 
 function JobItem(props: Props): JSX.Element {
+    moment.locale('zh-cn');
     const {
         job, task, onJobUpdate, childJobs, defaultCollapsed, onCollapseChange,
     } = props;
