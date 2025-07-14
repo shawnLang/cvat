@@ -101,13 +101,14 @@ services:
     labels:
       - traefik.enable=true
       - traefik.http.services.cvat.loadbalancer.server.port=8080
-      - traefik.http.routers.cvat.rule=Host(`${CVAT_HOST:-localhost}`) &&
+      - traefik.http.routers.cvat.rule=(Host(`192.168.1.40`) || Host(`120.236.194.125`) || Host(`0.0.0.0`)) &&
         PathPrefix(`/api/`, `/static/`, `/admin`, `/documentation/`, `/django-rq`)
       - traefik.http.routers.cvat.entrypoints=web
     volumes:
       - cvat_data:/home/django/data
       - cvat_keys:/home/django/keys
       - cvat_logs:/home/django/logs
+      - cvat_share:/home/django/share:ro
     networks:
       cvat:
         aliases:
@@ -143,6 +144,7 @@ services:
       - cvat_data:/home/django/data
       - cvat_keys:/home/django/keys
       - cvat_logs:/home/django/logs
+      - cvat_share:/home/django/share:ro
     networks:
       - cvat
 
@@ -159,6 +161,7 @@ services:
       - cvat_data:/home/django/data
       - cvat_keys:/home/django/keys
       - cvat_logs:/home/django/logs
+      - cvat_share:/home/django/share:ro
     networks:
       - cvat
 
@@ -175,6 +178,7 @@ services:
       - cvat_data:/home/django/data
       - cvat_keys:/home/django/keys
       - cvat_logs:/home/django/logs
+      - cvat_share:/home/django/share:ro
     networks:
       - cvat
 
@@ -239,6 +243,7 @@ services:
       - cvat_data:/home/django/data
       - cvat_keys:/home/django/keys
       - cvat_logs:/home/django/logs
+      - cvat_share:/home/django/share:ro
     networks:
       - cvat
 
@@ -267,7 +272,7 @@ services:
     labels:
       - traefik.enable=true
       - traefik.http.services.cvat-ui.loadbalancer.server.port=80
-      - traefik.http.routers.cvat-ui.rule=Host(`${CVAT_HOST:-localhost}`)
+      - traefik.http.routers.cvat-ui.rule=Host(`192.168.1.40`) || Host(`120.236.194.125`) || Host(`0.0.0.0`)
       - traefik.http.routers.cvat-ui.entrypoints=web
     networks:
       - cvat
@@ -419,12 +424,52 @@ services:
 
 volumes:
   cvat_db:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /home/data/cvat/cvat_db
   cvat_data:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /home/data/cvat/cvat_data
   cvat_keys:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /home/data/cvat/cvat_keys
   cvat_logs:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /home/data/cvat/cvat_logs
   cvat_inmem_db:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /home/data/cvat/cvat_inmem_db
   cvat_events_db:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /home/data/cvat/cvat_events_db
   cvat_cache_db:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /home/data/cvat/cvat_cache_db
+  cvat_share:
+    driver_opts:
+      type: none
+      device: /home/data/cvat/cvat_share
+      o: bind
 
 networks:
   cvat:
